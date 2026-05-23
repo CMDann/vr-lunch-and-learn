@@ -13,7 +13,7 @@ import { initAIScene }   from './demos/ai-scene.js'
 import { initEndScene }  from './demos/end.js'
 import { initAndyScene } from './demos/andy.js'
 
-const TOTAL = 35
+const TOTAL = 36
 
 /** Map slide index → { canvasId, init function } */
 const DEMOS = {

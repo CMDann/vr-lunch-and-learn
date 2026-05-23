@@ -2300,6 +2300,30 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); }
   font-size: 0.75rem;
 }
 
+/* Closing / thank you QR slide */
+.qr-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1.75rem 0 1.25rem;
+}
+
+.qr-code {
+  width: 11rem;
+  height: 11rem;
+  display: block;
+  border: 1px solid var(--border);
+  image-rendering: pixelated;
+}
+
+.qr-label {
+  font-size: 0.68rem;
+  letter-spacing: var(--spacing-wide);
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0.75rem;
+}
+
 /* OpenBrush image gallery */
 .ob-gallery {
   display: flex;

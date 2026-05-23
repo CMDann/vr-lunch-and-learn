@@ -1308,6 +1308,15 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); }
   color: #00a8e8;
 }
 
+.leg-hint {
+  font-size: 0.6rem;
+  letter-spacing: var(--spacing-wide);
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-left: auto;
+  opacity: 0.7;
+}
+
 .asset-stats-bar {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

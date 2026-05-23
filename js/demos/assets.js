@@ -1,5 +1,6 @@
-import * as THREE     from 'three'
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+import * as THREE          from 'three'
+import { GLTFLoader }       from 'three/addons/loaders/GLTFLoader.js'
+import { OrbitControls }    from 'three/addons/controls/OrbitControls.js'
 
 const ASSETS = [
   {
@@ -19,13 +20,14 @@ const ASSETS = [
   },
 ]
 
-// [solidX, wireX] for each model pair — spread across -7 → 7
-const PAIR_X       = [[-6.2, -4.0], [-1.0, 1.0], [4.0, 6.2]]
-const TARGET_HEIGHT = 2.6
+// [solidX, wireX] for each model pair
+const PAIR_X        = [[-5.5, -3.0], [-1.25, 1.25], [3.0, 5.5]]
+const TARGET_HEIGHT = 4.2
 
 /**
  * Assets demo — loads 3 GLBs, shows each solid next to its
  * wireframe copy. Writes triangle/vertex/bone stats to HTML.
+ * Drag to orbit. Scroll to zoom.
  */
 export function initAssetsScene(canvas) {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true })
@@ -34,35 +36,58 @@ export function initAssetsScene(canvas) {
   renderer.shadowMap.enabled = true
 
   const scene  = new THREE.Scene()
-  scene.fog    = new THREE.Fog(0x060810, 18, 38)
-  const camera = new THREE.PerspectiveCamera(70, 1, 0.1, 100)
-  camera.position.set(0, 2.5, 12)
-  camera.lookAt(0, 1, 0)
+  scene.fog    = new THREE.Fog(0x060810, 22, 45)
+  const camera = new THREE.PerspectiveCamera(65, 1, 0.1, 100)
+  camera.position.set(0, 3, 15)
+
+  // Orbit controls — drag to rotate, scroll to zoom, no pan
+  const controls          = new OrbitControls(camera, canvas)
+  controls.target.set(0, 2, 0)
+  controls.enableDamping  = true
+  controls.dampingFactor  = 0.06
+  controls.enablePan      = false
+  controls.minDistance    = 6
+  controls.maxDistance    = 28
+  controls.maxPolarAngle  = Math.PI / 1.85
+  controls.autoRotate     = true
+  controls.autoRotateSpeed = 0.6
+  controls.update()
+
+  // Pause auto-rotate while user interacts
+  canvas.addEventListener('pointerdown', () => {
+    controls.autoRotate = false
+  })
+  canvas.addEventListener('pointerup', () => {
+    setTimeout(() => { controls.autoRotate = true }, 2500)
+  })
 
   // Floor
   const floor = new THREE.Mesh(
-    new THREE.PlaneGeometry(40, 40),
+    new THREE.PlaneGeometry(50, 50),
     new THREE.MeshStandardMaterial({ color: 0x060810, roughness: 0.9 })
   )
   floor.rotation.x = -Math.PI / 2
   floor.receiveShadow = true
   scene.add(floor)
-  scene.add(new THREE.GridHelper(30, 24, 0x111122, 0x0a0a14))
+  scene.add(new THREE.GridHelper(40, 30, 0x111122, 0x0a0a14))
 
   // Lighting
   scene.add(new THREE.AmbientLight(0x1a1f30, 4))
-  const key = new THREE.DirectionalLight(0xffffff, 3)
-  key.position.set(4, 12, 8)
+  const key = new THREE.DirectionalLight(0xffffff, 3.5)
+  key.position.set(4, 14, 10)
   key.castShadow = true
   scene.add(key)
-  const fill = new THREE.DirectionalLight(0x00a8e8, 1.2)
-  fill.position.set(-8, 4, -4)
+  const fill = new THREE.DirectionalLight(0x00a8e8, 1.5)
+  fill.position.set(-10, 5, -5)
   scene.add(fill)
 
-  // Divider lines
+  // Divider lines between pairs
   for (let i = 0; i < 2; i++) {
-    const x   = [-2.4, 2.4][i]
-    const pts = [new THREE.Vector3(x, 0, -3), new THREE.Vector3(x, 5, -3)]
+    const x   = [-2.3, 2.3][i]
+    const pts = [
+      new THREE.Vector3(x, 0, -5),
+      new THREE.Vector3(x, 6, -5),
+    ]
     scene.add(new THREE.Line(
       new THREE.BufferGeometry().setFromPoints(pts),
       new THREE.LineBasicMaterial({
@@ -83,11 +108,11 @@ export function initAssetsScene(canvas) {
       asset.file,
       (gltf) => {
         try {
-          const stats = collectStats(gltf.scene)
+          const stats  = collectStats(gltf.scene)
           populateStat(asset.id, asset.label, stats)
 
-          // — Solid version: use the original gltf scene —
-          const solid = gltf.scene
+          // — Solid: original scene —
+          const solid  = gltf.scene
           const solidY = fitToHeight(solid, TARGET_HEIGHT)
           solid.position.set(PAIR_X[i][0], solidY, 0)
           solid.traverse(n => {
@@ -95,12 +120,12 @@ export function initAssetsScene(canvas) {
           })
           scene.add(solid)
 
-          // — Wireframe version: fresh clone with wireframe material —
+          // — Wireframe: geometry-only copy, no skeleton —
           const wire = buildWireframe(gltf.scene, TARGET_HEIGHT)
           wire.position.set(PAIR_X[i][1], 0, 0)
           scene.add(wire)
 
-          // Animate the solid only
+          // Animate solid only
           if (gltf.animations?.length) {
             const mx = new THREE.AnimationMixer(solid)
             mx.clipAction(gltf.animations[0]).play()
@@ -122,18 +147,11 @@ export function initAssetsScene(canvas) {
   resize()
 
   const clock = new THREE.Clock()
-  let   t     = 0
 
   renderer.setAnimationLoop(() => {
     const dt = clock.getDelta()
-    t += dt
-
     for (const mx of mixers) mx.update(dt)
-
-    camera.position.x = Math.sin(t * 0.07) * 1.0
-    camera.position.y = 2.2 + Math.sin(t * 0.05) * 0.35
-    camera.lookAt(0, 1, 0)
-
+    controls.update()
     renderer.render(scene, camera)
   })
 
@@ -151,8 +169,8 @@ export function initAssetsScene(canvas) {
 }
 
 /**
- * Scale and floor-align a group so its tallest axis equals
- * targetHeight. Returns the y translation needed to sit on y=0.
+ * Scale group so its tallest axis equals targetHeight.
+ * Returns the y offset needed to floor-align the result.
  */
 function fitToHeight(group, targetHeight) {
   const box    = new THREE.Box3().setFromObject(group)
@@ -160,62 +178,57 @@ function fitToHeight(group, targetHeight) {
   const maxDim = Math.max(size.x, size.y, size.z)
   if (maxDim === 0) return 0
 
-  const scale = targetHeight / maxDim
-  group.scale.setScalar(scale)
+  group.scale.setScalar(targetHeight / maxDim)
 
-  // Recompute after scaling to get correct floor offset
   const box2 = new THREE.Box3().setFromObject(group)
   return -box2.min.y
 }
 
 /**
- * Build a wireframe representation from a loaded GLTF scene.
- * Collects all mesh geometries and renders them as line segments.
- * Avoids skeleton cloning issues entirely.
+ * Build a wireframe group from raw mesh geometry.
+ * Reads world-space transforms from the source meshes so
+ * the wireframe matches the solid's proportions.
+ * No skeleton cloning — guaranteed to work with any GLB.
  */
 function buildWireframe(source, targetHeight) {
-  const group = new THREE.Group()
-
-  const wireMat = new THREE.MeshBasicMaterial({
+  const group  = new THREE.Group()
+  const mat    = new THREE.MeshBasicMaterial({
     color:       0x00a8e8,
     wireframe:   true,
     transparent: true,
-    opacity:     0.75,
+    opacity:     0.8,
   })
+
+  source.updateWorldMatrix(true, true)
 
   source.traverse(n => {
     if (!n.isMesh && !n.isSkinnedMesh) return
-    const mesh = new THREE.Mesh(n.geometry, wireMat)
+    const mesh = new THREE.Mesh(n.geometry, mat)
     mesh.position.copy(n.getWorldPosition(new THREE.Vector3()))
     mesh.quaternion.copy(n.getWorldQuaternion(new THREE.Quaternion()))
     mesh.scale.copy(n.getWorldScale(new THREE.Vector3()))
     group.add(mesh)
   })
 
-  // Scale to match the solid
   const box    = new THREE.Box3().setFromObject(group)
   const size   = box.getSize(new THREE.Vector3())
   const maxDim = Math.max(size.x, size.y, size.z)
-  if (maxDim > 0) {
-    const scale = targetHeight / maxDim
-    group.scale.setScalar(scale)
-  }
+  if (maxDim > 0) group.scale.setScalar(targetHeight / maxDim)
 
-  // Floor-align
   const box2 = new THREE.Box3().setFromObject(group)
   group.position.y = -box2.min.y
 
   return group
 }
 
-/** Traverse a scene and collect mesh statistics. */
+/** Collect triangle / vertex / material / bone stats from a scene. */
 function collectStats(root) {
   let tris = 0, verts = 0, bones = 0, skinned = false
   const matIds = new Set()
 
   root.traverse(n => {
     if (!n.isMesh && !n.isSkinnedMesh) return
-    const geo  = n.geometry
+    const geo = n.geometry
     if (geo.index) tris  += geo.index.count / 3
     else           tris  += (geo.attributes.position?.count ?? 0) / 3
     verts += geo.attributes.position?.count ?? 0

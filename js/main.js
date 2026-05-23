@@ -9,26 +9,28 @@ import { initDemo2 }     from './demos/demo2.js'
 import { initDemo3 }     from './demos/demo3.js'
 import { initDemo4 }     from './demos/demo4.js'
 import { initDemo5 }     from './demos/demo5.js'
-import { initAIScene }   from './demos/ai-scene.js'
-import { initEndScene }  from './demos/end.js'
-import { initAndyScene } from './demos/andy.js'
+import { initAIScene }      from './demos/ai-scene.js'
+import { initEndScene }     from './demos/end.js'
+import { initAndyScene }    from './demos/andy.js'
+import { initTheaterScene } from './demos/theater.js'
 
-const TOTAL = 36
+const TOTAL = 37
 
 /** Map slide index → { canvasId, init function } */
 const DEMOS = {
-  0:  { id: 'canvas-hero',   init: initHeroScene },
-  4:  { id: 'canvas-vr',    init: initVRScene },
-  5:  { id: 'canvas-ar',    init: initARScene },
-  10: { id: 'canvas-demo1',  init: initDemo1 },
-  11: { id: 'canvas-demo2',  init: initDemo2 },
-  12: { id: 'canvas-demo3',  init: initDemo3 },
-  13: { id: 'canvas-assets', init: initAssetsScene },
-  14: { id: 'canvas-demo4',  init: initDemo4 },
-  15: { id: 'canvas-demo5',  init: initDemo5 },
-  19: { id: 'canvas-ai',    init: initAIScene },
-  23: { id: 'canvas-end',   init: initEndScene },
-  34: { id: 'canvas-andy',  init: initAndyScene },
+  0:  { id: 'canvas-hero',    init: initHeroScene },
+  3:  { id: 'canvas-theater', init: initTheaterScene },
+  5:  { id: 'canvas-vr',     init: initVRScene },
+  6:  { id: 'canvas-ar',     init: initARScene },
+  11: { id: 'canvas-demo1',   init: initDemo1 },
+  12: { id: 'canvas-demo2',   init: initDemo2 },
+  13: { id: 'canvas-demo3',   init: initDemo3 },
+  14: { id: 'canvas-assets',  init: initAssetsScene },
+  15: { id: 'canvas-demo4',   init: initDemo4 },
+  16: { id: 'canvas-demo5',   init: initDemo5 },
+  20: { id: 'canvas-ai',     init: initAIScene },
+  24: { id: 'canvas-end',    init: initEndScene },
+  35: { id: 'canvas-andy',   init: initAndyScene },
 }
 
 let current = 0

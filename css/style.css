@@ -340,7 +340,7 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); }
   font-size: 0.65rem;
   letter-spacing: var(--spacing-wide);
   text-transform: uppercase;
-  color: var(--border-l);
+  color: var(--muted);
   border: 1px solid var(--border);
   padding: 0.4rem 1rem;
 }
@@ -423,7 +423,7 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); }
   font-size: 0.6rem;
   letter-spacing: var(--spacing-wide);
   text-transform: uppercase;
-  color: var(--border-l);
+  color: var(--muted);
   background: var(--surface);
 }
 
@@ -545,7 +545,7 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); }
   font-size: 0.6rem;
   text-transform: uppercase;
   letter-spacing: var(--spacing-wide);
-  color: var(--border-l);
+  color: var(--muted);
   margin-top: 4rem;
 }
 
@@ -1431,7 +1431,7 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); }
   font-size: 0.58rem;
   letter-spacing: var(--spacing-wide);
   text-transform: uppercase;
-  color: var(--border-l);
+  color: var(--muted);
   border: 1px solid var(--border);
   padding: 0.2rem 0.5rem;
   display: inline-block;
@@ -1549,7 +1549,7 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); }
 
 .converge-plus {
   font-size: 2rem;
-  color: var(--border-l);
+  color: var(--muted);
   flex-shrink: 0;
   font-weight: 700;
 }
@@ -1646,7 +1646,7 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); }
   font-size: 0.65rem;
   letter-spacing: var(--spacing);
   text-transform: uppercase;
-  color: var(--border-l);
+  color: var(--muted);
 }
 
 .ai-out-header {
@@ -1707,7 +1707,7 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); }
 }
 
 .contact-sep {
-  color: var(--border-l);
+  color: var(--muted);
 }
 
 /* ================================================================
@@ -1817,7 +1817,7 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); }
 
 .zc-items li::before {
   content: '— ';
-  color: var(--border-l);
+  color: var(--muted);
 }
 
 /* Safety rules */

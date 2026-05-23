@@ -85,7 +85,9 @@ export function initAIScene(canvas) {
 
   // Lights
   scene.add(new THREE.AmbientLight(0x050a18, 3))
-  scene.add(Object.assign(new THREE.DirectionalLight(0x4488ff, 1), { position: new THREE.Vector3(5, 8, 5) }))
+  const dirLight = new THREE.DirectionalLight(0x4488ff, 1)
+  dirLight.position.set(5, 8, 5)
+  scene.add(dirLight)
 
   resize()
 

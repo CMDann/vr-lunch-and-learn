@@ -86,13 +86,13 @@
 }
 
 /* Andy — OpenBrush art is designed for dark; keep canvas + overlay dark */
-[data-theme="light"] [data-slide="34"] {
+[data-theme="light"] [data-slide="36"] {
   --text:   #f0f0f0;
   --muted:  #aaaaaa;
   --accent: #ffffff;
 }
 
-[data-theme="light"] [data-slide="34"] .slide-content.overlay-left {
+[data-theme="light"] [data-slide="36"] .slide-content.overlay-left {
   background: linear-gradient(
     to right,
     rgba(10 10 10 / 0.95) 0%,

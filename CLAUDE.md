@@ -114,7 +114,7 @@ js/demos/
 bsd-branding-repo/  — Brand assets (submodule)
 bsdxr-ai-agent-skills/ — XR agent skills (submodule)
 bsd-standards-qa/   — Coding standards (submodule)
-.claude/agents/     — xr-educator.md, xr-researcher.md
+.claude/agents/     — xr-educator.md, xr-researcher.md, xr-safety-manager.md
 ```
 
 ### Sections
@@ -139,6 +139,7 @@ Edit slide 1 (`data-slide="1"`) in `index.html`. Replace `.image-placeholder` di
 
 - `xr-educator` — workshop design, facilitation, hardware recommendations
 - `xr-researcher` — XR research applications, study design
+- `xr-safety-manager` — HSE/safety training design, hazard scenarios, industrial XR
 
 ---
 

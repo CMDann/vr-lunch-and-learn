@@ -373,6 +373,26 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); }
   letter-spacing: var(--spacing);
 }
 
+.about-talk-label {
+  font-size: 0.58rem;
+  letter-spacing: var(--spacing-wide);
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.about-talk-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: var(--spacing);
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 0.4rem;
+  line-height: 1.5;
+}
+
 .image-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -727,6 +747,101 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); }
    OPPORTUNITY SLIDES
 ================================================================ */
 
+.opp-stats-row {
+  display: flex;
+  gap: 0;
+  margin-top: 2rem;
+  border: 1px solid var(--border);
+  max-width: 60rem;
+}
+
+.opp-stat {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.opp-stat:last-child {
+  border-right: none;
+}
+
+.opp-stat-num {
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+
+.opp-stat-label {
+  font-size: 0.58rem;
+  letter-spacing: var(--spacing-wide);
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Manitoba ecosystem grid */
+.mb-eco-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-top: 1.5rem;
+  max-width: 72rem;
+  width: 100%;
+  border: 1px solid var(--border);
+}
+
+.mb-eco-col {
+  padding: 1.25rem 1.5rem;
+  border-right: 1px solid var(--border);
+}
+
+.mb-eco-col:last-child {
+  border-right: none;
+}
+
+.mb-eco-header {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: var(--spacing-wide);
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0.75rem;
+}
+
+.mb-eco-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.mb-eco-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.mb-eco-name {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: var(--spacing);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.mb-eco-desc {
+  font-size: 0.6rem;
+  letter-spacing: var(--spacing);
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
 .big-num {
   font-size: clamp(3rem, 10vw, 8rem);
   font-weight: 700;
@@ -960,7 +1075,8 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); }
 .about-photo-col {
   justify-content: center;
   align-items: center;
-  max-width: 22rem;
+  flex: 1.4;
+  max-width: 36rem;
 }
 
 .glitch-wrap {

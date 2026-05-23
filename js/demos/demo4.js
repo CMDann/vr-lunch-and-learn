@@ -26,7 +26,9 @@ export function initDemo4(canvas) {
   const sun = new THREE.DirectionalLight(0xffffff, 1.5)
   sun.position.set(6, 10, 6)
   scene.add(sun)
-  scene.add(Object.assign(new THREE.DirectionalLight(0x1b3d9e, 0.8), { position: { x: -8, y: 3, z: -4 } }))
+  const fillLight = new THREE.DirectionalLight(0x1b3d9e, 0.8)
+  fillLight.position.set(-8, 3, -4)
+  scene.add(fillLight)
 
   const geos = [
     new THREE.BoxGeometry(1.2, 1.2, 1.2),

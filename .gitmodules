@@ -1,3 +1,9 @@
 [submodule "bsd-branding-repo"]
 	path = bsd-branding-repo
 	url = ./bsd-branding-repo
+[submodule "bsdxr-ai-agent-skills"]
+	path = bsdxr-ai-agent-skills
+	url = ./bsdxr-ai-agent-skills
+[submodule "bsd-standards-qa"]
+	path = bsd-standards-qa
+	url = ./bsd-standards-qa

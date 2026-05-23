@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XR WORKSHOP — BSD XR</title>
+  <link rel="icon" href="bsd-branding-repo/icons/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Progress bar -->
+  <div id="progress-bar"><div id="progress-fill"></div></div>
+
+  <!-- Logo -->
+  <div id="logo-container">
+    <img src="bsd-branding-repo/logos/logo-dark.png" alt="BSD XR" id="logo">
+  </div>
+
+  <!-- Section indicator -->
+  <nav id="section-indicator">
+    <button class="section-dot active" data-section="0">INTRO</button>
+    <button class="section-dot" data-section="1">VR / AR</button>
+    <button class="section-dot" data-section="2">DESIGN</button>
+    <button class="section-dot" data-section="3">OPPORTUNITY</button>
+    <button class="section-dot" data-section="4">AI IN XR</button>
+  </nav>
+
+  <!-- Nav controls -->
+  <div id="nav-controls">
+    <button id="btn-prev" aria-label="Previous slide">&#8592;</button>
+    <span id="slide-counter">01 / 20</span>
+    <button id="btn-next" aria-label="Next slide">&#8594;</button>
+  </div>
+
+  <!-- Keyboard hint -->
+  <div id="key-hint">&#8592; &#8594; TO NAVIGATE</div>
+
+  <!-- ================================================================
+       SLIDES
+  ================================================================ -->
+  <div id="slides-container">
+
+    <!-- ============================================================
+         SECTION 0 — INTRODUCTION
+    ============================================================ -->
+
+    <!-- Slide 0: Hero -->
+    <section class="slide active" data-slide="0" data-section="0">
+      <canvas id="canvas-hero"></canvas>
+      <div class="slide-content centered">
+        <div class="label">BSD XR PRESENTS</div>
+        <h1 class="hero-title">XR<br>WORKSHOP</h1>
+        <div class="hero-subtitle">EXTENDED REALITY — FROM CONCEPT TO EXPERIENCE</div>
+        <div class="hero-meta">1 HOUR &nbsp;/&nbsp; 5 SECTIONS &nbsp;/&nbsp; ONE CANVAS AT A TIME</div>
+      </div>
+    </section>
+
+    <!-- Slide 1: About Dann -->
+    <section class="slide" data-slide="1" data-section="0">
+      <div class="slide-content layout-split">
+        <div class="content-left">
+          <div class="label">ABOUT</div>
+          <h2>DANN BLAIR</h2>
+          <div class="subtitle">XR DEVELOPER — BSD XR</div>
+          <div class="about-items">
+            <div class="about-item">
+              <span class="ai-marker">—</span>
+              <span class="ai-text">PLACEHOLDER: Story one</span>
+            </div>
+            <div class="about-item">
+              <span class="ai-marker">—</span>
+              <span class="ai-text">PLACEHOLDER: Story two</span>
+            </div>
+            <div class="about-item">
+              <span class="ai-marker">—</span>
+              <span class="ai-text">PLACEHOLDER: Story three</span>
+            </div>
+          </div>
+        </div>
+        <div class="content-right">
+          <div class="image-grid">
+            <div class="image-slot"><div class="image-placeholder">IMAGE 01</div></div>
+            <div class="image-slot"><div class="image-placeholder">IMAGE 02</div></div>
+            <div class="image-slot"><div class="image-placeholder">IMAGE 03</div></div>
+            <div class="image-slot"><div class="image-placeholder">IMAGE 04</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 2: BSD XR -->
+    <section class="slide" data-slide="2" data-section="0">
+      <div class="slide-content centered">
+        <div class="label">SINCE 2015</div>
+        <h2>BIT SPACE DEVELOPMENT</h2>
+        <div class="tagline-text">IMMERSIVE TECHNOLOGY EXPERTS</div>
+        <div class="stats-row">
+          <div class="stat">
+            <span class="stat-num">10+</span>
+            <span class="stat-label">YEARS</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">6</span>
+            <span class="stat-label">VERTICALS</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">XR</span>
+            <span class="stat-label">SPECIALISTS</span>
+          </div>
+        </div>
+        <div class="tag-row">
+          <span class="tag">AEROSPACE</span>
+          <span class="tag">CONSTRUCTION</span>
+          <span class="tag">EDUCATION</span>
+          <span class="tag">MINING</span>
+          <span class="tag">RAILWAYS</span>
+          <span class="tag">MANUFACTURING</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 1 — VR & AR
+    ============================================================ -->
+
+    <!-- Slide 3: XR Spectrum -->
+    <section class="slide" data-slide="3" data-section="1">
+      <div class="slide-content centered">
+        <div class="label">SECTION 01</div>
+        <h2>THE XR SPECTRUM</h2>
+        <div class="spectrum-wrap">
+          <div class="spectrum-track">
+            <div class="spectrum-fill-bar"></div>
+            <div class="spectrum-point" style="left:4%">
+              <div class="sp-dot"></div>
+              <div class="sp-label">REAL<br>WORLD</div>
+            </div>
+            <div class="spectrum-point" style="left:28%">
+              <div class="sp-dot"></div>
+              <div class="sp-label">AUGMENTED<br>REALITY</div>
+            </div>
+            <div class="spectrum-point" style="left:52%">
+              <div class="sp-dot"></div>
+              <div class="sp-label">MIXED<br>REALITY</div>
+            </div>
+            <div class="spectrum-point" style="left:76%">
+              <div class="sp-dot"></div>
+              <div class="sp-label">VIRTUAL<br>REALITY</div>
+            </div>
+            <div class="spectrum-point" style="left:96%">
+              <div class="sp-dot"></div>
+              <div class="sp-label">VIRTUAL<br>WORLD</div>
+            </div>
+          </div>
+          <div class="spectrum-ends">
+            <span>REALITY</span>
+            <span>VIRTUALITY</span>
+          </div>
+        </div>
+        <div class="spectrum-def">XR IS THE UMBRELLA TERM FOR ALL IMMERSIVE TECHNOLOGIES</div>
+      </div>
+    </section>
+
+    <!-- Slide 4: VR -->
+    <section class="slide" data-slide="4" data-section="1">
+      <canvas id="canvas-vr"></canvas>
+      <div class="slide-content overlay-left">
+        <div class="label">VIRTUAL REALITY</div>
+        <h2>FULLY IMMERSIVE</h2>
+        <div class="def-list">
+          <div class="def-row">
+            <span class="def-key">DISPLAY</span>
+            <span class="def-val">100% DIGITAL</span>
+          </div>
+          <div class="def-row">
+            <span class="def-key">PRESENCE</span>
+            <span class="def-val">COMPLETE ISOLATION</span>
+          </div>
+          <div class="def-row">
+            <span class="def-key">USE CASES</span>
+            <span class="def-val">TRAINING, SIMULATION, ENTERTAINMENT</span>
+          </div>
+          <div class="def-row">
+            <span class="def-key">HARDWARE</span>
+            <span class="def-val">META QUEST, PICO, APPLE VISION PRO</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 5: AR -->
+    <section class="slide" data-slide="5" data-section="1">
+      <canvas id="canvas-ar"></canvas>
+      <div class="slide-content overlay-left">
+        <div class="label">AUGMENTED REALITY</div>
+        <h2>ENHANCED REAL WORLD</h2>
+        <div class="def-list">
+          <div class="def-row">
+            <span class="def-key">DISPLAY</span>
+            <span class="def-val">REAL + DIGITAL OVERLAY</span>
+          </div>
+          <div class="def-row">
+            <span class="def-key">PRESENCE</span>
+            <span class="def-val">SPATIAL AWARENESS MAINTAINED</span>
+          </div>
+          <div class="def-row">
+            <span class="def-key">USE CASES</span>
+            <span class="def-val">MAINTENANCE, NAVIGATION, TRAINING</span>
+          </div>
+          <div class="def-row">
+            <span class="def-key">HARDWARE</span>
+            <span class="def-val">HOLOLENS, MAGIC LEAP, SMARTPHONES</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 6: Why XR Works -->
+    <section class="slide" data-slide="6" data-section="1">
+      <div class="slide-content centered">
+        <div class="label">WHY IT WORKS</div>
+        <h2>THE SCIENCE OF PRESENCE</h2>
+        <div class="three-col">
+          <div class="col-card">
+            <div class="col-num">01</div>
+            <div class="col-title">SPATIAL MEMORY</div>
+            <div class="col-body">Humans retain information 3–4× better when learned in 3D spatial context. The environment becomes part of the memory.</div>
+          </div>
+          <div class="col-card">
+            <div class="col-num">02</div>
+            <div class="col-title">EMBODIMENT</div>
+            <div class="col-body">Presence triggers genuine physiological and psychological responses. The brain treats virtual events as real.</div>
+          </div>
+          <div class="col-card">
+            <div class="col-num">03</div>
+            <div class="col-title">SAFE FAILURE</div>
+            <div class="col-body">High-risk procedures trained without consequence. Safety without exposure. Error as learning, not liability.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 2 — DESIGNING AN EXPERIENCE
+    ============================================================ -->
+
+    <!-- Slide 7: Design Principles -->
+    <section class="slide" data-slide="7" data-section="2">
+      <div class="slide-content centered">
+        <div class="label">SECTION 02</div>
+        <h2>DESIGNING AN EXPERIENCE</h2>
+        <div class="principle-grid">
+          <div class="principle">
+            <span class="p-num">01</span>
+            <span class="p-text">COMFORT FIRST — NO MOTION SICKNESS</span>
+          </div>
+          <div class="principle">
+            <span class="p-num">02</span>
+            <span class="p-text">AFFORDANCES OVER INSTRUCTIONS</span>
+          </div>
+          <div class="principle">
+            <span class="p-num">03</span>
+            <span class="p-text">SPATIAL AUDIO GROUNDS PRESENCE</span>
+          </div>
+          <div class="principle">
+            <span class="p-num">04</span>
+            <span class="p-text">INTERACTION MUST FEEL PHYSICAL</span>
+          </div>
+          <div class="principle">
+            <span class="p-num">05</span>
+            <span class="p-text">LOCOMOTION DEFINES THE EXPERIENCE</span>
+          </div>
+          <div class="principle">
+            <span class="p-num">06</span>
+            <span class="p-text">PERFORMANCE IS A FEATURE — 72+ FPS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 8: Demo Stage 1 — Empty Scene -->
+    <section class="slide" data-slide="8" data-section="2">
+      <canvas id="canvas-demo1"></canvas>
+      <div class="slide-content demo-panel">
+        <div class="demo-badge">STAGE 01 / 05</div>
+        <h3>AN EMPTY SCENE</h3>
+        <div class="demo-notes">
+          <div class="note-item">— A renderer, a camera, a scene</div>
+          <div class="note-item">— The foundation of every XR experience</div>
+          <div class="note-item">— 72fps minimum. Non-negotiable.</div>
+        </div>
+        <pre class="code-block">const scene = new THREE.Scene()
+const camera = new THREE.PerspectiveCamera(
+  75, w / h, 0.1, 1000
+)
+const renderer = new THREE.WebGLRenderer()
+renderer.setAnimationLoop(render)</pre>
+      </div>
+    </section>
+
+    <!-- Slide 9: Demo Stage 2 — Geometry -->
+    <section class="slide" data-slide="9" data-section="2">
+      <canvas id="canvas-demo2"></canvas>
+      <div class="slide-content demo-panel">
+        <div class="demo-badge">STAGE 02 / 05</div>
+        <h3>GEOMETRY</h3>
+        <div class="demo-notes">
+          <div class="note-item">— Objects: vertices, faces, UVs</div>
+          <div class="note-item">— World space vs local space</div>
+          <div class="note-item">— Transform: position, rotation, scale</div>
+        </div>
+        <pre class="code-block">const geo = new THREE.BoxGeometry(1, 1, 1)
+const mat = new THREE.MeshBasicMaterial({
+  wireframe: true
+})
+const mesh = new THREE.Mesh(geo, mat)
+scene.add(mesh)</pre>
+      </div>
+    </section>
+
+    <!-- Slide 10: Demo Stage 3 — Lighting -->
+    <section class="slide" data-slide="10" data-section="2">
+      <canvas id="canvas-demo3"></canvas>
+      <div class="slide-content demo-panel">
+        <div class="demo-badge">STAGE 03 / 05</div>
+        <h3>LIGHTING + MATERIALS</h3>
+        <div class="demo-notes">
+          <div class="note-item">— PBR materials respond to light</div>
+          <div class="note-item">— Ambient + directional light setup</div>
+          <div class="note-item">— Shadows cost — use with intention</div>
+        </div>
+        <pre class="code-block">const mat = new THREE.MeshStandardMaterial({
+  color: 0x1b3d9e,
+  roughness: 0.4,
+  metalness: 0.6
+})
+const light = new THREE.DirectionalLight(0xffffff, 1)
+scene.add(light)</pre>
+      </div>
+    </section>
+
+    <!-- Slide 11: Demo Stage 4 — Interaction -->
+    <section class="slide" data-slide="11" data-section="2">
+      <canvas id="canvas-demo4"></canvas>
+      <div class="slide-content demo-panel">
+        <div class="demo-badge">STAGE 04 / 05</div>
+        <h3>INTERACTION</h3>
+        <div class="demo-notes">
+          <div class="note-item">— Raycasting detects intersections</div>
+          <div class="note-item">— Same pattern works with XR controllers</div>
+          <div class="note-item">— Hover to highlight — click to activate</div>
+        </div>
+        <pre class="code-block">const ray = new THREE.Raycaster()
+ray.setFromCamera(pointer, camera)
+const hits = ray.intersectObjects(objects)
+if (hits.length) {
+  hits[0].object.material.emissive
+    .set(0x00a8e8)
+}</pre>
+      </div>
+    </section>
+
+    <!-- Slide 12: Demo Stage 5 — Full Experience -->
+    <section class="slide" data-slide="12" data-section="2">
+      <canvas id="canvas-demo5"></canvas>
+      <div class="slide-content demo-panel">
+        <div class="demo-badge">STAGE 05 / 05</div>
+        <h3>AN EXPERIENCE</h3>
+        <div class="demo-notes">
+          <div class="note-item">— Fog, particles, post-processing</div>
+          <div class="note-item">— Environmental storytelling</div>
+          <div class="note-item">— Every element earns its render cost</div>
+        </div>
+        <div class="demo-cta">HOVER OBJECTS TO INTERACT</div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 3 — OPPORTUNITY
+    ============================================================ -->
+
+    <!-- Slide 13: Opportunity Intro -->
+    <section class="slide" data-slide="13" data-section="3">
+      <div class="slide-content centered">
+        <div class="label">SECTION 03</div>
+        <h2>THE OPPORTUNITY</h2>
+        <div class="big-num">$300B+</div>
+        <div class="big-num-label">PROJECTED XR MARKET BY 2030</div>
+        <div class="opp-text">
+          XR is not consumer entertainment.<br>
+          It is precision tooling for industries where errors cost lives.
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 14: Industries -->
+    <section class="slide" data-slide="14" data-section="3">
+      <div class="slide-content centered">
+        <div class="label">WHERE XR DELIVERS</div>
+        <h2>INDUSTRY APPLICATIONS</h2>
+        <div class="industry-grid">
+          <div class="industry-card">
+            <div class="ind-name">AEROSPACE</div>
+            <div class="ind-app">MRO TRAINING / PROCEDURE SIMULATION</div>
+          </div>
+          <div class="industry-card">
+            <div class="ind-name">CONSTRUCTION</div>
+            <div class="ind-app">SITE SAFETY / BIM WALKTHROUGHS</div>
+          </div>
+          <div class="industry-card">
+            <div class="ind-name">MINING</div>
+            <div class="ind-app">HAZARD IDENTIFICATION / REMOTE OPS</div>
+          </div>
+          <div class="industry-card">
+            <div class="ind-name">RAILWAYS</div>
+            <div class="ind-app">SAFETY COMPLIANCE / MAINTENANCE</div>
+          </div>
+          <div class="industry-card">
+            <div class="ind-name">MANUFACTURING</div>
+            <div class="ind-app">ASSEMBLY TRAINING / QUALITY ASSURANCE</div>
+          </div>
+          <div class="industry-card">
+            <div class="ind-name">EDUCATION</div>
+            <div class="ind-app">SPATIAL LEARNING / CURRICULUM INTEGRATION</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 15: Why Now / Timeline -->
+    <section class="slide" data-slide="15" data-section="3">
+      <div class="slide-content centered">
+        <div class="label">WHY NOW</div>
+        <h2>THE CONDITIONS ARE RIGHT</h2>
+        <div class="timeline">
+          <div class="tl-row">
+            <span class="tl-year">2015</span>
+            <span class="tl-line"></span>
+            <span class="tl-event">FIRST-GEN CONSUMER VR — OCULUS RIFT, HTC VIVE. BSD XR FOUNDED.</span>
+          </div>
+          <div class="tl-row">
+            <span class="tl-year">2019</span>
+            <span class="tl-line"></span>
+            <span class="tl-event">STANDALONE VR — QUEST 1. NO PC REQUIRED.</span>
+          </div>
+          <div class="tl-row">
+            <span class="tl-year">2021</span>
+            <span class="tl-line"></span>
+            <span class="tl-event">ENTERPRISE ADOPTION ACCELERATES POST-COVID</span>
+          </div>
+          <div class="tl-row">
+            <span class="tl-year">2023</span>
+            <span class="tl-line"></span>
+            <span class="tl-event">APPLE VISION PRO — SPATIAL COMPUTING ENTERS MAINSTREAM</span>
+          </div>
+          <div class="tl-row tl-now">
+            <span class="tl-year">NOW</span>
+            <span class="tl-line"></span>
+            <span class="tl-event">HARDWARE AFFORDABLE. SOFTWARE MATURE. MARKET READY.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 4 — GENERATIVE AI IN XR
+    ============================================================ -->
+
+    <!-- Slide 16: AI in XR Intro -->
+    <section class="slide" data-slide="16" data-section="4">
+      <canvas id="canvas-ai"></canvas>
+      <div class="slide-content centered">
+        <div class="label">SECTION 04</div>
+        <h2>GENERATIVE AI<br>IN XR</h2>
+        <div class="ai-intro-sub">THE NEXT LAYER</div>
+      </div>
+    </section>
+
+    <!-- Slide 17: AI Applications -->
+    <section class="slide" data-slide="17" data-section="4">
+      <div class="slide-content centered">
+        <div class="label">AI × XR</div>
+        <h2>WHERE THEY MEET</h2>
+        <div class="ai-grid">
+          <div class="ai-card">
+            <div class="ai-card-title">PROCEDURAL ENVIRONMENTS</div>
+            <div class="ai-card-body">Generate infinite training scenarios from a prompt. No two sessions identical. Authoring cost approaches zero.</div>
+          </div>
+          <div class="ai-card">
+            <div class="ai-card-title">INTELLIGENT NPCS</div>
+            <div class="ai-card-body">AI-driven characters that respond naturally. Replaces scripted dialogue trees with genuine conversation.</div>
+          </div>
+          <div class="ai-card">
+            <div class="ai-card-title">NATURAL INTERACTION</div>
+            <div class="ai-card-body">Voice, gesture, and gaze interpreted by LLMs. Interfaces without buttons. Intent over input.</div>
+          </div>
+          <div class="ai-card">
+            <div class="ai-card-title">REAL-TIME ADAPTATION</div>
+            <div class="ai-card-body">Experience adapts to trainee performance. Difficulty, pacing, and scenario branching driven by behavior.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 18: What Comes Next -->
+    <section class="slide" data-slide="18" data-section="4">
+      <div class="slide-content centered">
+        <div class="label">LOOKING FORWARD</div>
+        <h2>WHAT COMES NEXT</h2>
+        <div class="future-list">
+          <div class="future-row">
+            <span class="f-marker">—</span>
+            <span class="f-text">SPATIAL AI AGENTS OPERATING IN 3D ENVIRONMENTS</span>
+          </div>
+          <div class="future-row">
+            <span class="f-marker">—</span>
+            <span class="f-text">LLM-GENERATED SCENARIOS FROM SME KNOWLEDGE BASES</span>
+          </div>
+          <div class="future-row">
+            <span class="f-marker">—</span>
+            <span class="f-text">PHOTOREALISTIC ENVIRONMENTS FROM REFERENCE IMAGES</span>
+          </div>
+          <div class="future-row">
+            <span class="f-marker">—</span>
+            <span class="f-text">CONTINUOUS COMPETENCY ASSESSMENT WITHOUT EXPLICIT TESTING</span>
+          </div>
+          <div class="future-row">
+            <span class="f-marker">—</span>
+            <span class="f-text">THE INTERFACE DISAPPEARS — ONLY THE TASK REMAINS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 19: Close -->
+    <section class="slide" data-slide="19" data-section="4">
+      <canvas id="canvas-end"></canvas>
+      <div class="slide-content centered">
+        <div class="label">BSD XR</div>
+        <h2>BUILD THE<br>FUTURE</h2>
+        <div class="end-tagline">IMMERSIVE TECHNOLOGY EXPERTS</div>
+        <div class="contact-row">
+          <span>BSDXR.COM</span>
+          <span class="contact-sep">—</span>
+          <span>INFO@BSDXR.COM</span>
+          <span class="contact-sep">—</span>
+          <span>WINNIPEG, CANADA</span>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /#slides-container -->
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

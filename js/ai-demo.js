@@ -1,6 +1,6 @@
 /**
  * AI Demo — live OpenAI scenario generator for slide 20.
- * Reads OPENAI_API_KEY from window.__ENV (injected by env.js).
+ * Reads the API key from the #ai-api-key input (session only, never stored).
  * Falls back gracefully if no key is present.
  */
 
@@ -23,10 +23,11 @@ Keep each section to 1-2 lines. Be specific and technical. No filler.`
  * Safe to call multiple times — idempotent.
  */
 export function initAIDemo() {
-  const input  = document.getElementById('ai-prompt')
-  const btn    = document.getElementById('ai-generate-btn')
-  const output = document.getElementById('ai-demo-output')
-  const status = document.getElementById('ai-demo-status')
+  const keyInput = document.getElementById('ai-api-key')
+  const input    = document.getElementById('ai-prompt')
+  const btn      = document.getElementById('ai-generate-btn')
+  const output   = document.getElementById('ai-demo-output')
+  const status   = document.getElementById('ai-demo-status')
 
   if (!input || !btn || !output) return
   if (btn.dataset.wired) return
@@ -44,10 +45,10 @@ export function initAIDemo() {
       return
     }
 
-    const apiKey = window.__ENV?.OPENAI_API_KEY
-    if (!apiKey || apiKey === 'your-key-here') {
+    const apiKey = keyInput?.value.trim()
+    if (!apiKey || !apiKey.startsWith('sk-')) {
       output.innerHTML = ''
-      setStatus('NO API KEY — ADD YOUR KEY TO .env AND RELOAD')
+      setStatus('PASTE A VALID OPENAI API KEY ABOVE FIRST')
       return
     }
 

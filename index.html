@@ -685,6 +685,19 @@ if (hits.length) {
         <div class="label">LIVE DEMO — AI IN XR</div>
         <h2>GENERATE A TRAINING SCENARIO</h2>
         <div class="ai-demo-wrap">
+          <div class="ai-key-row">
+            <input
+              id="ai-api-key"
+              class="ai-key-input"
+              type="password"
+              placeholder="PASTE OPENAI API KEY (sk-...)"
+              autocomplete="off"
+              spellcheck="false"
+            >
+            <span class="ai-key-note">
+              NOT STORED — SESSION ONLY
+            </span>
+          </div>
           <div class="ai-demo-prompt-row">
             <input
               id="ai-prompt"
@@ -698,7 +711,7 @@ if (hits.length) {
           </div>
           <div id="ai-demo-output" class="ai-demo-output">
             <div class="ai-output-placeholder">
-              ENTER A PROMPT ABOVE — E.G. "ELECTRICAL PANEL LOCKOUT/TAGOUT FOR MINING"
+              ENTER A KEY AND PROMPT ABOVE — E.G. "ELECTRICAL PANEL LOCKOUT/TAGOUT FOR MINING"
             </div>
           </div>
           <div id="ai-demo-status" class="ai-demo-status"></div>

@@ -1,5 +1,7 @@
 # PAINT THE VOID — BSD XR Workshop Presentation
 
+**Live demo:** [cmdann.github.io/vr-lunch-and-learn](https://cmdann.github.io/vr-lunch-and-learn/)
+
 An interactive, browser-based XR workshop presentation by Bit Space Development Ltd. (BSD XR). Covers the full XR spectrum from foundational concepts through hands-on VR art creation with OpenBrush.
 
 **Format:** 1 hour / 2 parts / 36 slides
@@ -49,9 +51,8 @@ js/demos/
   andy.js                     — OpenBrush GLB export viewer
   end.js                      — Closing slide scene
 assets/                       — Images, GLB files, QR code
-bsd-branding-repo/            — Brand assets (git submodule)
+bsd-branding-repo/            — Brand assets (committed directly)
 bsdxr-ai-agent-skills/        — XR agent skills (git submodule)
-bsd-standards-qa/             — Coding standards (git submodule)
 .claude/agents/               — xr-educator.md, xr-researcher.md, xr-safety-manager.md
 docs/                         — Presentation content as markdown
 ```
@@ -109,6 +110,15 @@ Three custom Claude agent skills are active in `.claude/agents/`:
 - **xr-educator** — workshop design, facilitation, hardware recommendations
 - **xr-researcher** — XR research applications, study design
 - **xr-safety-manager** — HSE/safety training, hazard scenarios, industrial XR
+
+---
+
+## BSD XR Open Source
+
+BSD XR maintains free public resources used in this project:
+
+- **[bsdxr-ai-agent-skills](https://github.com/BitSpaceDevelopment/bsdxr-ai-agent-skills)** — Claude agent skill definitions for XR education, research, and safety
+- **[bsd-branding-repo](https://github.com/BitSpaceDevelopment/bsd-branding-repo)** — BSD XR brand assets: logos, icons, colour tokens
 
 ---
 

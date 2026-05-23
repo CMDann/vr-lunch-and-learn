@@ -4,7 +4,6 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 
 const TARGET_HEIGHT = 3.2
 const BG_DARK       = 0x060810
-const BG_LIGHT      = 0xf0ede7
 
 /**
  * Andy viewer — loads an OpenBrush GLB export and displays it
@@ -95,13 +94,6 @@ export function initAndyScene(canvas) {
     scene.userData.mixer?.update(dt)
     controls.update()
     renderer.render(scene, camera)
-  })
-
-  document.addEventListener('themechange', ({ detail: { light } }) => {
-    const bg = light ? BG_LIGHT : BG_DARK
-    renderer.setClearColor(bg, 1)
-    scene.fog.color.setHex(bg)
-    floorMat.color.setHex(light ? 0xd8d5cf : BG_DARK)
   })
 
   const ro = new ResizeObserver(resize)

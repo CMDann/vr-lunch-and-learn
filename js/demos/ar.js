@@ -17,7 +17,7 @@ export function initARScene(canvas) {
   camera.position.set(0, 4, 8)
   camera.lookAt(0, 0, 0)
 
-  // Real-world floor (warm, subtle)
+  // Real-world floor
   const floorGeo = new THREE.PlaneGeometry(20, 20)
   const floorMat = new THREE.MeshBasicMaterial({ color: 0x1a1510 })
   const floor    = new THREE.Mesh(floorGeo, floorMat)
@@ -25,8 +25,8 @@ export function initARScene(canvas) {
   floor.position.y = -0.01
   scene.add(floor)
 
-  // AR grid overlay (blue)
-  const grid = new THREE.GridHelper(16, 20, 0x1b3d9e, 0x0d1a4a)
+  // AR grid overlay — stored as let so theme listener can replace it
+  let grid = new THREE.GridHelper(16, 20, 0x1b3d9e, 0x0d1a4a)
   scene.add(grid)
 
   // Holographic objects
@@ -103,6 +103,14 @@ export function initARScene(canvas) {
 
   document.addEventListener('themechange', ({ detail: { light } }) => {
     renderer.setClearColor(light ? BG_LIGHT : BG_DARK, 1)
+    floorMat.color.setHex(light ? 0xd0cdc7 : 0x1a1510)
+    scene.remove(grid)
+    grid = new THREE.GridHelper(
+      16, 20,
+      light ? 0x4477aa : 0x1b3d9e,
+      light ? 0x8899bb : 0x0d1a4a
+    )
+    scene.add(grid)
   })
 
   const ro = new ResizeObserver(resize)

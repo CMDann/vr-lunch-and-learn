@@ -65,10 +65,10 @@ export function initAssetsScene(canvas) {
   })
 
   // Floor
-  const floor = new THREE.Mesh(
-    new THREE.PlaneGeometry(50, 50),
-    new THREE.MeshStandardMaterial({ color: 0x060810, roughness: 0.9 })
-  )
+  const floorMat = new THREE.MeshStandardMaterial({
+    color: BG_DARK, roughness: 0.9,
+  })
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(50, 50), floorMat)
   floor.rotation.x = -Math.PI / 2
   floor.receiveShadow = true
   scene.add(floor)
@@ -162,6 +162,7 @@ export function initAssetsScene(canvas) {
     const bg = light ? BG_LIGHT : BG_DARK
     renderer.setClearColor(bg, 1)
     scene.fog.color.setHex(bg)
+    floorMat.color.setHex(light ? 0xd8d5cf : BG_DARK)
   })
 
   const ro = new ResizeObserver(resize)

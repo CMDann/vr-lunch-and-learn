@@ -30,10 +30,10 @@ export function initDemo5(canvas) {
   composer.addPass(bloom)
 
   // Floor
-  const floor = new THREE.Mesh(
-    new THREE.PlaneGeometry(30, 30),
-    new THREE.MeshStandardMaterial({ color: 0x060a10, roughness: 0.8, metalness: 0.1 })
-  )
+  const floorMat = new THREE.MeshStandardMaterial({
+    color: 0x060a10, roughness: 0.8, metalness: 0.1,
+  })
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(30, 30), floorMat)
   floor.rotation.x = -Math.PI / 2
   floor.receiveShadow = true
   scene.add(floor)
@@ -167,6 +167,7 @@ export function initDemo5(canvas) {
     const bg = light ? BG_LIGHT : BG_DARK
     renderer.setClearColor(bg, 1)
     scene.fog.color.setHex(bg)
+    floorMat.color.setHex(light ? 0xd8d5cf : 0x060a10)
   })
 
   const ro = new ResizeObserver(resize)

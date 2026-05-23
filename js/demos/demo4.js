@@ -18,10 +18,10 @@ export function initDemo4(canvas) {
   const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 200)
 
   // Floor
-  const floor = new THREE.Mesh(
-    new THREE.PlaneGeometry(20, 20),
-    new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 0.9 })
-  )
+  const floorMat = new THREE.MeshStandardMaterial({
+    color: 0x111111, roughness: 0.9,
+  })
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(20, 20), floorMat)
   floor.rotation.x = -Math.PI / 2
   scene.add(floor)
 
@@ -127,6 +127,7 @@ export function initDemo4(canvas) {
     const bg = light ? BG_LIGHT : BG_DARK
     renderer.setClearColor(bg, 1)
     scene.fog.color.setHex(bg)
+    floorMat.color.setHex(light ? 0xd8d5cf : 0x111111)
   })
 
   const ro = new ResizeObserver(resize)

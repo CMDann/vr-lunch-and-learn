@@ -67,6 +67,41 @@
   color: var(--text);
 }
 
+[data-theme="light"] .assets-overlay {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(240 237 231 / 0.85) 0%,
+      rgba(240 237 231 / 0) 22%
+    ),
+    linear-gradient(
+      to top,
+      rgba(240 237 231 / 0.92) 0%,
+      rgba(240 237 231 / 0) 38%
+    );
+}
+
+[data-theme="light"] .asset-stats-bar {
+  background: rgba(224 221 215 / 0.92);
+}
+
+/* Andy — OpenBrush art is designed for dark; keep canvas + overlay dark */
+[data-theme="light"] [data-slide="34"] {
+  --text:   #f0f0f0;
+  --muted:  #aaaaaa;
+  --accent: #ffffff;
+}
+
+[data-theme="light"] [data-slide="34"] .slide-content.overlay-left {
+  background: linear-gradient(
+    to right,
+    rgba(10 10 10 / 0.95) 0%,
+    rgba(10 10 10 / 0.75) 70%,
+    rgba(10 10 10 / 0) 100%
+  );
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -279,7 +314,7 @@ html, body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 5rem 4rem 4rem;
+  padding: 5rem 4rem 5.5rem;
 }
 
 /* Centered layout */
@@ -308,7 +343,7 @@ html, body {
 .slide-content.overlay-left {
   justify-content: flex-end;
   align-items: flex-start;
-  padding-bottom: 5rem;
+  padding-bottom: 5.5rem;
   max-width: 36rem;
   background: linear-gradient(
     to right,
@@ -323,7 +358,7 @@ html, body {
 .slide-content.demo-panel {
   justify-content: flex-end;
   align-items: flex-start;
-  padding-bottom: 3rem;
+  padding-bottom: 5.5rem;
   background: linear-gradient(
     to top,
     rgba(10 10 10 / 0.97) 0%,

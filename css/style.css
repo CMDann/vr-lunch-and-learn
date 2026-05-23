@@ -2176,3 +2176,21 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); }
   color: var(--muted);
   font-style: italic;
 }
+
+/* OpenBrush image gallery */
+.ob-gallery {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 52rem;
+  margin: 0.75rem 0;
+}
+
+.ob-gallery img {
+  flex: 1;
+  width: 0;
+  height: 11rem;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  display: block;
+}

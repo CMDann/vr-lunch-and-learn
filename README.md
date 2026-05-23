@@ -2,6 +2,8 @@
 
 **Live demo:** [cmdann.github.io/vr-lunch-and-learn](https://cmdann.github.io/vr-lunch-and-learn/)
 
+![PAINT THE VOID — BSD XR](assets/BSDXR%20Promo.png)
+
 An interactive, browser-based XR workshop presentation by Bit Space Development Ltd. (BSD XR). Covers the full XR spectrum from foundational concepts through hands-on VR art creation with OpenBrush.
 
 **Format:** 1 hour / 2 parts / 36 slides

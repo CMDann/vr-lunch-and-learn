@@ -1,9 +1,7 @@
 [submodule "bsd-branding-repo"]
 	path = bsd-branding-repo
-	url = ./bsd-branding-repo
+	url = https://github.com/BitSpaceDevelopment/bsd-branding-repo
+
 [submodule "bsdxr-ai-agent-skills"]
 	path = bsdxr-ai-agent-skills
-	url = ./bsdxr-ai-agent-skills
-[submodule "bsd-standards-qa"]
-	path = bsd-standards-qa
-	url = ./bsd-standards-qa
+	url = https://github.com/BitSpaceDevelopment/bsdxr-ai-agent-skills

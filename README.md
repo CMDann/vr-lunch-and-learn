@@ -114,6 +114,15 @@ Three custom Claude agent skills are active in `.claude/agents/`:
 
 ---
 
+## BSD XR Open Source
+
+BSD XR maintains free public resources used in this project:
+
+- **[bsdxr-ai-agent-skills](https://github.com/BitSpaceDevelopment/bsdxr-ai-agent-skills)** — Claude agent skill definitions for XR education, research, and safety
+- **[bsd-branding-repo](https://github.com/BitSpaceDevelopment/bsd-branding-repo)** — BSD XR brand assets: logos, icons, colour tokens
+
+---
+
 ## Docs
 
 Presentation content is documented in [`/docs`](docs/):

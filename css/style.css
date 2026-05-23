@@ -52,8 +52,8 @@
   background: linear-gradient(
     to top,
     rgba(240 237 231 / 0.97) 0%,
-    rgba(240 237 231 / 0.65) 45%,
-    rgba(240 237 231 / 0) 100%
+    rgba(240 237 231 / 0.85) 22%,
+    rgba(240 237 231 / 0) 38%
   );
   text-shadow: none;
 }
@@ -355,7 +355,7 @@ html, body {
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
 }
 
-/* Demo panel — bottom bar */
+/* Demo panel — bottom bar, gradient only covers the text strip */
 .slide-content.demo-panel {
   justify-content: flex-end;
   align-items: flex-start;
@@ -363,8 +363,8 @@ html, body {
   background: linear-gradient(
     to top,
     rgba(10 10 10 / 0.97) 0%,
-    rgba(10 10 10 / 0.65) 45%,
-    rgba(10 10 10 / 0) 100%
+    rgba(10 10 10 / 0.85) 22%,
+    rgba(10 10 10 / 0) 38%
   );
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
 }

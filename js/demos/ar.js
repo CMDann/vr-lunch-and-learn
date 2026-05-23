@@ -29,13 +29,18 @@ export function initARScene(canvas) {
   let grid = new THREE.GridHelper(16, 20, 0x1b3d9e, 0x0d1a4a)
   scene.add(grid)
 
-  // Holographic objects
-  const holoMat = () => new THREE.MeshBasicMaterial({
-    color: 0x00a8e8,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.6,
-  })
+  // Holographic objects — store mats for theme updates
+  const holoMats = []
+  const holoMat  = () => {
+    const m = new THREE.MeshBasicMaterial({
+      color:       0x00a8e8,
+      wireframe:   true,
+      transparent: true,
+      opacity:     0.6,
+    })
+    holoMats.push(m)
+    return m
+  }
 
   const objects = []
 
@@ -104,6 +109,7 @@ export function initARScene(canvas) {
   document.addEventListener('themechange', ({ detail: { light } }) => {
     renderer.setClearColor(light ? BG_LIGHT : BG_DARK, 1)
     floorMat.color.setHex(light ? 0xd0cdc7 : 0x1a1510)
+    holoMats.forEach(m => { m.opacity = light ? 0.85 : 0.6 })
     scene.remove(grid)
     grid = new THREE.GridHelper(
       16, 20,

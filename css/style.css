@@ -406,7 +406,7 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); }
 
 .theater-screen-wrap {
   position: absolute;
-  top: 6%;
+  top: 16%;
   left: 50%;
   transform: translateX(-50%);
   width: 58%;

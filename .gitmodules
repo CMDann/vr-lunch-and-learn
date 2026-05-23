@@ -1,0 +1,3 @@
+[submodule "bsd-branding-repo"]
+	path = bsd-branding-repo
+	url = ./bsd-branding-repo

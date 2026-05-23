@@ -1,3 +1,5 @@
+import { loadEnv }       from './env.js'
+import { initAIDemo }    from './ai-demo.js'
 import { initHeroScene } from './demos/hero.js'
 import { initVRScene }   from './demos/vr.js'
 import { initARScene }   from './demos/ar.js'
@@ -9,20 +11,20 @@ import { initDemo5 }     from './demos/demo5.js'
 import { initAIScene }   from './demos/ai-scene.js'
 import { initEndScene }  from './demos/end.js'
 
-const TOTAL = 20
+const TOTAL = 23
 
 /** Map slide index → { canvasId, init function } */
 const DEMOS = {
   0:  { id: 'canvas-hero',  init: initHeroScene },
   4:  { id: 'canvas-vr',   init: initVRScene },
   5:  { id: 'canvas-ar',   init: initARScene },
-  8:  { id: 'canvas-demo1', init: initDemo1 },
-  9:  { id: 'canvas-demo2', init: initDemo2 },
-  10: { id: 'canvas-demo3', init: initDemo3 },
-  11: { id: 'canvas-demo4', init: initDemo4 },
-  12: { id: 'canvas-demo5', init: initDemo5 },
-  16: { id: 'canvas-ai',   init: initAIScene },
-  19: { id: 'canvas-end',  init: initEndScene },
+  10: { id: 'canvas-demo1', init: initDemo1 },
+  11: { id: 'canvas-demo2', init: initDemo2 },
+  12: { id: 'canvas-demo3', init: initDemo3 },
+  13: { id: 'canvas-demo4', init: initDemo4 },
+  14: { id: 'canvas-demo5', init: initDemo5 },
+  18: { id: 'canvas-ai',   init: initAIScene },
+  22: { id: 'canvas-end',  init: initEndScene },
 }
 
 let current = 0
@@ -121,5 +123,9 @@ document.addEventListener('touchend', e => {
 }, { passive: true })
 
 // ── Boot ─────────────────────────────────────────────────────────────────────
+
+loadEnv().then(() => {
+  initAIDemo()
+})
 
 goTo(0)

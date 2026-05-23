@@ -38,7 +38,7 @@
   <!-- Nav controls -->
   <div id="nav-controls">
     <button id="btn-prev" aria-label="Previous slide">&#8592;</button>
-    <span id="slide-counter">01 / 20</span>
+    <span id="slide-counter">01 / 23</span>
     <button id="btn-next" aria-label="Next slide">&#8594;</button>
   </div>
 
@@ -65,31 +65,35 @@
       </div>
     </section>
 
-    <!-- Slide 1: About Dann -->
+    <!-- Slide 1: About Daniel -->
     <section class="slide" data-slide="1" data-section="0">
       <div class="slide-content layout-split">
         <div class="content-left">
           <div class="label">ABOUT</div>
-          <h2>DANN BLAIR</h2>
-          <div class="subtitle">XR DEVELOPER — BSD XR</div>
+          <h2>DANIEL BLAIR</h2>
+          <div class="subtitle">FOUNDER &amp; CTO — BSD XR &nbsp;/&nbsp; INSTRUCTOR — RED RIVER COLLEGE</div>
           <div class="about-items">
             <div class="about-item">
               <span class="ai-marker">—</span>
-              <span class="ai-text">PLACEHOLDER: Story one</span>
+              <span class="ai-text">EDUCATOR, RESEARCHER, TECHNOLOGIST — IMMERSIVE TECH + AI</span>
             </div>
             <div class="about-item">
               <span class="ai-marker">—</span>
-              <span class="ai-text">PLACEHOLDER: Story two</span>
+              <span class="ai-text">CHAIR, BOARD OF DIRECTORS — NEW MEDIA MANITOBA</span>
             </div>
             <div class="about-item">
               <span class="ai-marker">—</span>
-              <span class="ai-text">PLACEHOLDER: Story three</span>
+              <span class="ai-text">AWARD-WINNING ENTREPRENEUR + SOFTWARE DEVELOPER</span>
+            </div>
+            <div class="about-item">
+              <span class="ai-marker">—</span>
+              <span class="ai-text">AEROSPACE / CONSTRUCTION / MINING / DEFENCE / UTILITIES</span>
             </div>
           </div>
         </div>
         <div class="content-right">
           <div class="image-grid">
-            <div class="image-slot"><div class="image-placeholder">IMAGE 01</div></div>
+            <div class="image-slot"><div class="image-placeholder">HEADSHOT</div></div>
             <div class="image-slot"><div class="image-placeholder">IMAGE 02</div></div>
             <div class="image-slot"><div class="image-placeholder">IMAGE 03</div></div>
             <div class="image-slot"><div class="image-placeholder">IMAGE 04</div></div>
@@ -288,8 +292,76 @@
       </div>
     </section>
 
-    <!-- Slide 8: Demo Stage 1 — Empty Scene -->
+    <!-- Slide 8: Interaction Modalities -->
     <section class="slide" data-slide="8" data-section="2">
+      <div class="slide-content centered">
+        <div class="label">HOW USERS INTERACT</div>
+        <h2>INTERACTION MODALITIES</h2>
+        <div class="modality-grid">
+          <div class="modality-card">
+            <div class="modality-num">01</div>
+            <div class="modality-name">GAZE</div>
+            <div class="modality-desc">Eyes as pointer. Dwell-based activation. Always available — no peripheral required. Fatigue accumulates fast. Use for awareness, not precision.</div>
+            <div class="modality-tag">LOW PRECISION / HANDS-FREE</div>
+          </div>
+          <div class="modality-card">
+            <div class="modality-num">02</div>
+            <div class="modality-name">CONTROLLER</div>
+            <div class="modality-desc">6DOF tracked input. Trigger, grip, thumbstick, face buttons. Haptic feedback. The workhorse of VR. Precise, reliable, and universally understood.</div>
+            <div class="modality-tag">HIGH PRECISION / HAPTICS</div>
+          </div>
+          <div class="modality-card">
+            <div class="modality-num">03</div>
+            <div class="modality-name">HAND TRACKING</div>
+            <div class="modality-desc">No peripheral. Pinch to select, grab to manipulate. Feels natural — but occlusion, range limits, and latency demand careful affordance design.</div>
+            <div class="modality-tag">NATURAL / CONTEXT-DEPENDENT</div>
+          </div>
+          <div class="modality-card">
+            <div class="modality-num">04</div>
+            <div class="modality-name">VOICE</div>
+            <div class="modality-desc">Ambient, hands-free commands. Strong for navigation and mode switching. On-device models have latency. Not suitable as a primary interaction layer.</div>
+            <div class="modality-tag">AMBIENT / SUPPLEMENTAL</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 9: Interaction Patterns -->
+    <section class="slide" data-slide="9" data-section="2">
+      <div class="slide-content centered">
+        <div class="label">DESIGN PATTERNS</div>
+        <h2>INTERACTION PATTERNS</h2>
+        <div class="pattern-grid">
+          <div class="pattern-card">
+            <div class="pattern-icon">[ NEAR ]</div>
+            <div class="pattern-name">DIRECT MANIPULATION</div>
+            <div class="pattern-desc">Reach into the world and grab. Intuitive because it mirrors physical reality. Requires spatial accuracy — arm fatigue is real above shoulder height.</div>
+            <div class="pattern-rule">RULE — Keep interactive objects within comfortable reach. No gorilla arm.</div>
+          </div>
+          <div class="pattern-card">
+            <div class="pattern-icon">[ FAR ]</div>
+            <div class="pattern-name">RAYCAST / POINTER</div>
+            <div class="pattern-desc">Project a ray from hand or gaze. Hover to target, trigger to select. The dominant pattern in most XR applications. Works at any distance.</div>
+            <div class="pattern-rule">RULE — Visual ray + cursor gives critical affordance feedback.</div>
+          </div>
+          <div class="pattern-card">
+            <div class="pattern-icon">[ MOVE ]</div>
+            <div class="pattern-name">LOCOMOTION</div>
+            <div class="pattern-desc">How users travel through virtual space. Teleport: safe, no sickness. Continuous: fast, disorienting for some. The choice shapes the entire experience feel.</div>
+            <div class="pattern-rule">RULE — Offer teleport as fallback. Comfort is non-negotiable.</div>
+          </div>
+          <div class="pattern-card">
+            <div class="pattern-icon">[ UI ]</div>
+            <div class="pattern-name">SPATIAL UI</div>
+            <div class="pattern-desc">UI lives in world space — not screen space. Panels, menus, labels anchored to the environment or to objects. Head-locked UI causes nausea. Do not do it.</div>
+            <div class="pattern-rule">RULE — No HUD. UI must exist in the world.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 10: Demo Stage 1 — Empty Scene -->
+    <section class="slide" data-slide="10" data-section="2">
       <canvas id="canvas-demo1"></canvas>
       <div class="slide-content demo-panel">
         <div class="demo-badge">STAGE 01 / 05</div>
@@ -309,7 +381,7 @@ renderer.setAnimationLoop(render)</pre>
     </section>
 
     <!-- Slide 9: Demo Stage 2 — Geometry -->
-    <section class="slide" data-slide="9" data-section="2">
+    <section class="slide" data-slide="11" data-section="2">
       <canvas id="canvas-demo2"></canvas>
       <div class="slide-content demo-panel">
         <div class="demo-badge">STAGE 02 / 05</div>
@@ -329,7 +401,7 @@ scene.add(mesh)</pre>
     </section>
 
     <!-- Slide 10: Demo Stage 3 — Lighting -->
-    <section class="slide" data-slide="10" data-section="2">
+    <section class="slide" data-slide="12" data-section="2">
       <canvas id="canvas-demo3"></canvas>
       <div class="slide-content demo-panel">
         <div class="demo-badge">STAGE 03 / 05</div>
@@ -350,7 +422,7 @@ scene.add(light)</pre>
     </section>
 
     <!-- Slide 11: Demo Stage 4 — Interaction -->
-    <section class="slide" data-slide="11" data-section="2">
+    <section class="slide" data-slide="13" data-section="2">
       <canvas id="canvas-demo4"></canvas>
       <div class="slide-content demo-panel">
         <div class="demo-badge">STAGE 04 / 05</div>
@@ -371,7 +443,7 @@ if (hits.length) {
     </section>
 
     <!-- Slide 12: Demo Stage 5 — Full Experience -->
-    <section class="slide" data-slide="12" data-section="2">
+    <section class="slide" data-slide="14" data-section="2">
       <canvas id="canvas-demo5"></canvas>
       <div class="slide-content demo-panel">
         <div class="demo-badge">STAGE 05 / 05</div>
@@ -390,7 +462,7 @@ if (hits.length) {
     ============================================================ -->
 
     <!-- Slide 13: Opportunity Intro -->
-    <section class="slide" data-slide="13" data-section="3">
+    <section class="slide" data-slide="15" data-section="3">
       <div class="slide-content centered">
         <div class="label">SECTION 03</div>
         <h2>THE OPPORTUNITY</h2>
@@ -404,7 +476,7 @@ if (hits.length) {
     </section>
 
     <!-- Slide 14: Industries -->
-    <section class="slide" data-slide="14" data-section="3">
+    <section class="slide" data-slide="16" data-section="3">
       <div class="slide-content centered">
         <div class="label">WHERE XR DELIVERS</div>
         <h2>INDUSTRY APPLICATIONS</h2>
@@ -438,7 +510,7 @@ if (hits.length) {
     </section>
 
     <!-- Slide 15: Why Now / Timeline -->
-    <section class="slide" data-slide="15" data-section="3">
+    <section class="slide" data-slide="17" data-section="3">
       <div class="slide-content centered">
         <div class="label">WHY NOW</div>
         <h2>THE CONDITIONS ARE RIGHT</h2>
@@ -476,8 +548,8 @@ if (hits.length) {
          SECTION 4 — GENERATIVE AI IN XR
     ============================================================ -->
 
-    <!-- Slide 16: AI in XR Intro -->
-    <section class="slide" data-slide="16" data-section="4">
+    <!-- Slide 18: AI in XR Intro -->
+    <section class="slide" data-slide="18" data-section="4">
       <canvas id="canvas-ai"></canvas>
       <div class="slide-content centered">
         <div class="label">SECTION 04</div>
@@ -486,34 +558,65 @@ if (hits.length) {
       </div>
     </section>
 
-    <!-- Slide 17: AI Applications -->
-    <section class="slide" data-slide="17" data-section="4">
+    <!-- Slide 19: The Convergence -->
+    <section class="slide" data-slide="19" data-section="4">
       <div class="slide-content centered">
-        <div class="label">AI × XR</div>
-        <h2>WHERE THEY MEET</h2>
-        <div class="ai-grid">
-          <div class="ai-card">
-            <div class="ai-card-title">PROCEDURAL ENVIRONMENTS</div>
-            <div class="ai-card-body">Generate infinite training scenarios from a prompt. No two sessions identical. Authoring cost approaches zero.</div>
+        <div class="label">WHY NOW</div>
+        <h2>TWO TECHNOLOGIES CONVERGING</h2>
+        <div class="convergence-row">
+          <div class="converge-block">
+            <div class="cb-title">XR GIVES AI</div>
+            <div class="cb-items">
+              <div class="cb-item">— A BODY IN THE WORLD</div>
+              <div class="cb-item">— SPATIAL CONTEXT + 3D PERCEPTION</div>
+              <div class="cb-item">— PHYSICAL INTERACTION SURFACE</div>
+              <div class="cb-item">— PRESENCE AS FEEDBACK LOOP</div>
+            </div>
           </div>
-          <div class="ai-card">
-            <div class="ai-card-title">INTELLIGENT NPCS</div>
-            <div class="ai-card-body">AI-driven characters that respond naturally. Replaces scripted dialogue trees with genuine conversation.</div>
+          <div class="converge-plus">×</div>
+          <div class="converge-block">
+            <div class="cb-title">AI GIVES XR</div>
+            <div class="cb-items">
+              <div class="cb-item">— INFINITE CONTENT GENERATION</div>
+              <div class="cb-item">— ADAPTIVE, RESPONSIVE CHARACTERS</div>
+              <div class="cb-item">— NATURAL LANGUAGE AS INTERFACE</div>
+              <div class="cb-item">— BEHAVIOR-DRIVEN BRANCHING</div>
+            </div>
           </div>
-          <div class="ai-card">
-            <div class="ai-card-title">NATURAL INTERACTION</div>
-            <div class="ai-card-body">Voice, gesture, and gaze interpreted by LLMs. Interfaces without buttons. Intent over input.</div>
+        </div>
+        <div class="converge-result">RESULT — EXPERIENCES THAT THINK, ADAPT, AND RESPOND</div>
+      </div>
+    </section>
+
+    <!-- Slide 20: AI Applications — Live Demo -->
+    <section class="slide" data-slide="20" data-section="4">
+      <div class="slide-content centered">
+        <div class="label">LIVE DEMO — AI IN XR</div>
+        <h2>GENERATE A TRAINING SCENARIO</h2>
+        <div class="ai-demo-wrap">
+          <div class="ai-demo-prompt-row">
+            <input
+              id="ai-prompt"
+              class="ai-prompt-input"
+              type="text"
+              placeholder="DESCRIBE AN INDUSTRY AND A TRAINING NEED..."
+              autocomplete="off"
+              spellcheck="false"
+            >
+            <button id="ai-generate-btn" class="ai-generate-btn">GENERATE</button>
           </div>
-          <div class="ai-card">
-            <div class="ai-card-title">REAL-TIME ADAPTATION</div>
-            <div class="ai-card-body">Experience adapts to trainee performance. Difficulty, pacing, and scenario branching driven by behavior.</div>
+          <div id="ai-demo-output" class="ai-demo-output">
+            <div class="ai-output-placeholder">
+              ENTER A PROMPT ABOVE — E.G. "ELECTRICAL PANEL LOCKOUT/TAGOUT FOR MINING"
+            </div>
           </div>
+          <div id="ai-demo-status" class="ai-demo-status"></div>
         </div>
       </div>
     </section>
 
-    <!-- Slide 18: What Comes Next -->
-    <section class="slide" data-slide="18" data-section="4">
+    <!-- Slide 21: What Comes Next -->
+    <section class="slide" data-slide="21" data-section="4">
       <div class="slide-content centered">
         <div class="label">LOOKING FORWARD</div>
         <h2>WHAT COMES NEXT</h2>
@@ -524,11 +627,11 @@ if (hits.length) {
           </div>
           <div class="future-row">
             <span class="f-marker">—</span>
-            <span class="f-text">LLM-GENERATED SCENARIOS FROM SME KNOWLEDGE BASES</span>
+            <span class="f-text">LLM-GENERATED SCENARIOS FROM SME KNOWLEDGE BASES — MINUTES, NOT MONTHS</span>
           </div>
           <div class="future-row">
             <span class="f-marker">—</span>
-            <span class="f-text">PHOTOREALISTIC ENVIRONMENTS FROM REFERENCE IMAGES</span>
+            <span class="f-text">PHOTOREALISTIC ENVIRONMENTS FROM REFERENCE IMAGES AND SITE SCANS</span>
           </div>
           <div class="future-row">
             <span class="f-marker">—</span>
@@ -543,7 +646,7 @@ if (hits.length) {
     </section>
 
     <!-- Slide 19: Close -->
-    <section class="slide" data-slide="19" data-section="4">
+    <section class="slide" data-slide="22" data-section="4">
       <canvas id="canvas-end"></canvas>
       <div class="slide-content centered">
         <div class="label">BSD XR</div>

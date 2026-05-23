@@ -12,7 +12,7 @@ import { initDemo5 }     from './demos/demo5.js'
 import { initAIScene }   from './demos/ai-scene.js'
 import { initEndScene }  from './demos/end.js'
 
-const TOTAL = 24
+const TOTAL = 34
 
 /** Map slide index → { canvasId, init function } */
 const DEMOS = {
@@ -112,7 +112,9 @@ document.getElementById('btn-prev').addEventListener('click', () => goTo(current
 document.querySelectorAll('.section-dot').forEach(dot => {
   dot.addEventListener('click', () => {
     const section = dot.dataset.section
-    const first = document.querySelector(`[data-section="${section}"]`)
+    const first = document.querySelector(
+      `#slides-container [data-section="${section}"]`
+    )
     if (first) goTo(parseInt(first.dataset.slide, 10))
   })
 })

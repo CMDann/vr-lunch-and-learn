@@ -315,6 +315,7 @@ html, body {
   display: flex;
   flex-direction: column;
   padding: 5rem 4rem 5.5rem;
+  overflow: hidden;
 }
 
 /* Centered layout */

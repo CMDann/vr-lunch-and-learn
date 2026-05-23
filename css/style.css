@@ -1834,6 +1834,23 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); }
   color: var(--muted);
 }
 
+.gh-link {
+  font-family: var(--font);
+  font-size: 0.6rem;
+  letter-spacing: var(--spacing-wide);
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  padding: 0.4rem 1rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.gh-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
 /* ================================================================
    PART 2 — HANDS-ON SESSION
 ================================================================ */

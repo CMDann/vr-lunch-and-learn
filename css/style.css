@@ -783,6 +783,108 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); }
   line-height: 1.5;
 }
 
+/* "What you can build" grid */
+.build-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: 1.5rem;
+  max-width: 64rem;
+  border: 1px solid var(--border);
+}
+
+.build-card {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-align: left;
+}
+
+.build-card:nth-child(3n) {
+  border-right: none;
+}
+
+.build-card:nth-last-child(-n+3) {
+  border-bottom: none;
+}
+
+.bc-icon {
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-bottom: 0.1rem;
+}
+
+.bc-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: var(--spacing);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.bc-desc {
+  font-size: 0.6rem;
+  letter-spacing: var(--spacing);
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Jobs grid */
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: 1.5rem;
+  max-width: 64rem;
+  border: 1px solid var(--border);
+}
+
+.job-card {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  text-align: left;
+}
+
+.job-card:nth-child(3n) {
+  border-right: none;
+}
+
+.job-card:nth-last-child(-n+3) {
+  border-bottom: none;
+}
+
+.jc-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: var(--spacing);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.jc-skills {
+  font-size: 0.58rem;
+  letter-spacing: var(--spacing-wide);
+  text-transform: uppercase;
+  color: #00a8e8;
+  margin-bottom: 0.2rem;
+}
+
+.jc-desc {
+  font-size: 0.6rem;
+  letter-spacing: var(--spacing);
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 /* Manitoba ecosystem grid */
 .mb-eco-grid {
   display: grid;

@@ -87,6 +87,9 @@ function updateChrome() {
 // ── Keyboard navigation ─────────────────────────────────────────────────────
 
 document.addEventListener('keydown', e => {
+  const tag = document.activeElement?.tagName
+  if (tag === 'INPUT' || tag === 'TEXTAREA') return
+
   if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'ArrowDown') {
     e.preventDefault()
     goTo(current + 1)

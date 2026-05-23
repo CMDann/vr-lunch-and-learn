@@ -11,7 +11,7 @@
   --border:      #222222;
   --border-l:    #333333;
   --text:        #e5e5e5;
-  --muted:       #666666;
+  --muted:       #aaaaaa;
   --accent:      #ffffff;
 
   --grad-from:   #1b3d9e;
@@ -267,10 +267,11 @@ html, body {
   max-width: 36rem;
   background: linear-gradient(
     to right,
-    rgba(10 10 10 / 0.92) 0%,
-    rgba(10 10 10 / 0.7) 70%,
+    rgba(10 10 10 / 0.95) 0%,
+    rgba(10 10 10 / 0.75) 70%,
     rgba(10 10 10 / 0) 100%
   );
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
 }
 
 /* Demo panel — bottom bar */
@@ -280,10 +281,11 @@ html, body {
   padding-bottom: 3rem;
   background: linear-gradient(
     to top,
-    rgba(10 10 10 / 0.95) 0%,
-    rgba(10 10 10 / 0.6) 45%,
+    rgba(10 10 10 / 0.97) 0%,
+    rgba(10 10 10 / 0.65) 45%,
     rgba(10 10 10 / 0) 100%
   );
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
 }
 
 /* ================================================================

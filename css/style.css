@@ -1660,34 +1660,45 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); }
 
 .ai-key-row {
   display: flex;
-  align-items: center;
-  gap: 1rem;
+  gap: 0;
 }
 
 .ai-key-input {
   flex: 1;
   background: var(--surface);
   border: 1px solid var(--border);
+  border-right: none;
   color: var(--text);
   font-family: var(--font);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   letter-spacing: var(--spacing);
-  padding: 0.6rem 1rem;
+  text-transform: uppercase;
+  padding: 0.75rem 1rem;
   outline: none;
   transition: border-color 0.2s;
 }
 
+.ai-key-input::placeholder {
+  color: var(--muted);
+  font-size: 0.65rem;
+}
+
 .ai-key-input:focus {
-  border-color: var(--accent);
+  border-color: var(--border-l);
 }
 
 .ai-key-note {
-  font-size: 0.55rem;
-  letter-spacing: var(--spacing-wide);
+  border: 1px solid var(--border);
   color: var(--muted);
+  font-family: var(--font);
+  font-size: 0.7rem;
+  letter-spacing: var(--spacing-wide);
   text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
   white-space: nowrap;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
 }
 
 .ai-demo-prompt-row {

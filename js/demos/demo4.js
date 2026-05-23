@@ -2,11 +2,14 @@ import * as THREE from 'three'
 
 const BG_DARK  = 0x0a0a0a
 const BG_LIGHT = 0xf0ede7
+const ARENA    = 4.2
+const GRAVITY  = -12
+const DAMPING  = 0.82
 
 /**
- * Demo Stage 4 — Raycasting / interaction.
- * Hover to highlight, click to launch.
- * Same pattern used in VR with controller raycasts.
+ * Demo Stage 4 — Interaction: collision physics.
+ * Objects bounce off walls and each other.
+ * Hover highlights via raycasting. Click launches toward center.
  */
 export function initDemo4(canvas) {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true })
@@ -17,11 +20,12 @@ export function initDemo4(canvas) {
   scene.fog    = new THREE.Fog(BG_DARK, 20, 40)
   const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 200)
 
-  // Floor
   const floorMat = new THREE.MeshStandardMaterial({
     color: 0x111111, roughness: 0.9,
   })
-  const floor = new THREE.Mesh(new THREE.PlaneGeometry(20, 20), floorMat)
+  const floor = new THREE.Mesh(
+    new THREE.PlaneGeometry(20, 20), floorMat
+  )
   floor.rotation.x = -Math.PI / 2
   scene.add(floor)
 
@@ -29,70 +33,137 @@ export function initDemo4(canvas) {
   const sun = new THREE.DirectionalLight(0xffffff, 1.5)
   sun.position.set(6, 10, 6)
   scene.add(sun)
-  const fillLight = new THREE.DirectionalLight(0x1b3d9e, 0.8)
-  fillLight.position.set(-8, 3, -4)
-  scene.add(fillLight)
+  const fill = new THREE.DirectionalLight(0x1b3d9e, 0.8)
+  fill.position.set(-8, 3, -4)
+  scene.add(fill)
 
-  const geos = [
-    new THREE.BoxGeometry(1.2, 1.2, 1.2),
-    new THREE.SphereGeometry(0.8, 24, 16),
-    new THREE.TorusGeometry(0.7, 0.25, 12, 40),
-    new THREE.ConeGeometry(0.6, 1.4, 12),
-    new THREE.IcosahedronGeometry(0.8, 0),
+  const specs = [
+    { geo: new THREE.BoxGeometry(1.2, 1.2, 1.2),       r: 0.85 },
+    { geo: new THREE.SphereGeometry(0.8, 24, 16),      r: 0.80 },
+    { geo: new THREE.TorusGeometry(0.7, 0.25, 12, 40), r: 0.75 },
+    { geo: new THREE.ConeGeometry(0.6, 1.4, 12),       r: 0.80 },
+    { geo: new THREE.IcosahedronGeometry(0.8, 0),      r: 0.80 },
   ]
-  const positions = [[-2, 0.6, 0], [0, 0.8, -2], [2, 0.7, 0], [0, 0.7, 2], [-1.5, 0.8, 2]]
 
-  const objects = geos.map((geo, i) => {
-    const mesh = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({
-      color: 0x888888,
-      roughness: 0.4,
-      metalness: 0.6,
-      emissive: 0x000000,
-      emissiveIntensity: 0,
-    }))
-    mesh.position.set(...positions[i])
-    mesh.userData.spinning = false
-    mesh.userData.spinSpeed = 0
+  const bodies = specs.map((s, i) => {
+    const mesh = new THREE.Mesh(
+      s.geo,
+      new THREE.MeshStandardMaterial({
+        color:             0x888888,
+        roughness:         0.4,
+        metalness:         0.6,
+        emissive:          new THREE.Color(0x000000),
+        emissiveIntensity: 0,
+      })
+    )
+    const angle = (i / specs.length) * Math.PI * 2
+    mesh.position.set(
+      Math.cos(angle) * 2.0,
+      s.r + 2 + i * 1.2,
+      Math.sin(angle) * 2.0
+    )
     scene.add(mesh)
-    return mesh
+    return {
+      mesh,
+      r: s.r,
+      vel: new THREE.Vector3(
+        (Math.random() - 0.5) * 3,
+        -Math.random() * 2,
+        (Math.random() - 0.5) * 3
+      ),
+    }
   })
 
-  const raycaster = new THREE.Raycaster()
-  const pointer   = new THREE.Vector2(-9, -9)
-  let   hovered   = null
+  const meshes     = bodies.map(b => b.mesh)
+  const raycaster  = new THREE.Raycaster()
+  const pointer    = new THREE.Vector2(-9, -9)
+  let   hovered    = null
 
   canvas.addEventListener('mousemove', e => {
-    const r = canvas.getBoundingClientRect()
+    const rect = canvas.getBoundingClientRect()
     pointer.set(
-      ((e.clientX - r.left) / r.width)  * 2 - 1,
-      -((e.clientY - r.top)  / r.height) * 2 + 1
+      ((e.clientX - rect.left) / rect.width)  * 2 - 1,
+      -((e.clientY - rect.top)  / rect.height) * 2 + 1
     )
   })
 
   canvas.addEventListener('click', () => {
-    if (hovered) {
-      hovered.userData.spinning  = !hovered.userData.spinning
-      hovered.userData.spinSpeed = 0.08
-    }
+    if (!hovered) return
+    const body = bodies.find(b => b.mesh === hovered)
+    if (!body) return
+    const dir = body.mesh.position.clone().normalize().negate()
+    dir.y = 0.8
+    dir.normalize()
+    body.vel.addScaledVector(dir, 7)
   })
 
   resize()
 
-  let t = 0
+  const clock = new THREE.Clock()
+  let   t     = 0
+
   renderer.setAnimationLoop(() => {
-    t += 0.005
+    const dt = Math.min(clock.getDelta(), 0.05)
+    t += dt
 
+    for (const b of bodies) {
+      b.vel.y += GRAVITY * dt
+      b.mesh.position.addScaledVector(b.vel, dt)
+
+      const speed = b.vel.length()
+      b.mesh.rotation.x += speed * dt * 0.4
+      b.mesh.rotation.z += b.vel.x * dt * 0.25
+
+      if (b.mesh.position.y < b.r) {
+        b.mesh.position.y = b.r
+        b.vel.y  = Math.abs(b.vel.y) * DAMPING
+        b.vel.x *= 0.97
+        b.vel.z *= 0.97
+      }
+
+      for (const axis of ['x', 'z']) {
+        const wall = ARENA - b.r
+        if (b.mesh.position[axis] > wall) {
+          b.mesh.position[axis] = wall
+          b.vel[axis] = -Math.abs(b.vel[axis]) * DAMPING
+        } else if (b.mesh.position[axis] < -wall) {
+          b.mesh.position[axis] = -wall
+          b.vel[axis] = Math.abs(b.vel[axis]) * DAMPING
+        }
+      }
+    }
+
+    // Elastic sphere-sphere collisions
+    for (let i = 0; i < bodies.length; i++) {
+      for (let j = i + 1; j < bodies.length; j++) {
+        const a    = bodies[i]
+        const b    = bodies[j]
+        const diff = b.mesh.position.clone().sub(a.mesh.position)
+        const dist = diff.length()
+        const min  = a.r + b.r
+        if (dist >= min || dist < 0.001) continue
+        const overlap = (min - dist) / 2
+        const norm    = diff.divideScalar(dist)
+        a.mesh.position.addScaledVector(norm, -overlap)
+        b.mesh.position.addScaledVector(norm,  overlap)
+        const relVel = a.vel.clone().sub(b.vel)
+        const dot    = relVel.dot(norm)
+        if (dot > 0) {
+          a.vel.addScaledVector(norm, -dot)
+          b.vel.addScaledVector(norm,  dot)
+        }
+      }
+    }
+
+    // Raycasting — hover highlight
     raycaster.setFromCamera(pointer, camera)
-    const hits = raycaster.intersectObjects(objects)
+    const hits = raycaster.intersectObjects(meshes)
 
-    // Reset all
     if (hovered && (!hits.length || hits[0].object !== hovered)) {
       hovered.material.emissive.set(0x000000)
       hovered.material.emissiveIntensity = 0
       hovered = null
     }
-
-    // Highlight hit
     if (hits.length) {
       const obj = hits[0].object
       if (obj !== hovered) {
@@ -102,23 +173,12 @@ export function initDemo4(canvas) {
       }
     }
 
-    // Spin activated objects
-    objects.forEach((obj, i) => {
-      if (obj.userData.spinning) {
-        obj.userData.spinSpeed = Math.min(obj.userData.spinSpeed + 0.003, 0.1)
-        obj.rotation.y += obj.userData.spinSpeed
-      } else {
-        obj.rotation.y += 0.007 + i * 0.002
-        obj.rotation.x += 0.003
-      }
-    })
-
     camera.position.set(
       Math.sin(t * 0.18) * 9,
       4 + Math.sin(t * 0.1) * 1,
       Math.cos(t * 0.18) * 9
     )
-    camera.lookAt(0, 0.5, 0)
+    camera.lookAt(0, 1, 0)
 
     renderer.render(scene, camera)
   })

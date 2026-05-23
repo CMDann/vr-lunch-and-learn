@@ -426,6 +426,37 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); }
   display: block;
 }
 
+.theater-link-row {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1.2rem;
+  z-index: 6;
+}
+
+.theater-link-btn {
+  display: inline-block;
+  padding: 0.55rem 1.4rem;
+  border: 1px solid rgba(100 130 255 / 0.5);
+  background: rgba(10 10 30 / 0.75);
+  color: #a0b8ff;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  backdrop-filter: blur(6px);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.theater-link-btn:hover {
+  background: rgba(30 50 140 / 0.85);
+  border-color: rgba(130 160 255 / 0.8);
+  color: #ffffff;
+}
+
 /* ================================================================
    HERO SLIDE
 ================================================================ */

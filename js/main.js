@@ -14,7 +14,7 @@ import { initEndScene }     from './demos/end.js'
 import { initAndyScene }    from './demos/andy.js'
 import { initTheaterScene } from './demos/theater.js'
 
-const TOTAL = 37
+const TOTAL = 38
 
 /** Map slide index → { canvasId, init function } */
 const DEMOS = {
@@ -30,7 +30,8 @@ const DEMOS = {
   16: { id: 'canvas-demo5',   init: initDemo5 },
   20: { id: 'canvas-ai',     init: initAIScene },
   24: { id: 'canvas-end',    init: initEndScene },
-  35: { id: 'canvas-andy',   init: initAndyScene },
+  30: { id: 'canvas-theater2', init: initTheaterScene },
+  36: { id: 'canvas-andy',   init: initAndyScene },
 }
 
 let current = 0

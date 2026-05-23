@@ -5,12 +5,12 @@
 ================================================================ */
 
 :root {
-  --bg:          #0a0a0a;
-  --surface:     #111111;
-  --surface-2:   #181818;
-  --border:      #222222;
-  --border-l:    #333333;
-  --text:        #e5e5e5;
+  --bg:          #111111;
+  --surface:     #1a1a1a;
+  --surface-2:   #222222;
+  --border:      #2e2e2e;
+  --border-l:    #444444;
+  --text:        #f0f0f0;
   --muted:       #aaaaaa;
   --accent:      #ffffff;
 
@@ -20,6 +20,37 @@
   --font: 'Space Mono', monospace;
   --spacing: 0.15em;
   --spacing-wide: 0.25em;
+}
+
+/* ================================================================
+   LIGHT MODE
+================================================================ */
+
+[data-theme="light"] {
+  --bg:        #f0ede7;
+  --surface:   #e5e2dc;
+  --surface-2: #dad7d1;
+  --border:    #c5c2bc;
+  --border-l:  #b2afaa;
+  --text:      #141414;
+  --muted:     #555555;
+  --accent:    #141414;
+}
+
+/* Canvas slides keep light text — 3D scene behind is always dark */
+[data-theme="light"] .slide:has(canvas) {
+  --text:   #f0f0f0;
+  --muted:  #aaaaaa;
+  --accent: #ffffff;
+}
+
+[data-theme="light"] .section-dot.active {
+  background: rgba(0 0 0 / 0.06);
+}
+
+[data-theme="light"] .code-block {
+  background: rgba(218 215 209 / 0.95);
+  color: var(--text);
 }
 
 *, *::before, *::after {
@@ -35,7 +66,7 @@ html, body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font);
-  font-size: 16px;
+  font-size: 18px;
 }
 
 /* ================================================================

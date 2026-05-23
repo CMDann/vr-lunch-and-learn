@@ -135,6 +135,22 @@ document.addEventListener('touchend', e => {
   goTo(dx < 0 ? current + 1 : current - 1)
 }, { passive: true })
 
+// ── Theme toggle ─────────────────────────────────────────────────────────────
+
+document.getElementById('btn-theme').addEventListener('click', () => {
+  const html  = document.documentElement
+  const logo  = document.getElementById('logo')
+  const light = html.dataset.theme === 'light'
+
+  if (light) {
+    delete html.dataset.theme
+    logo.src = 'bsd-branding-repo/logos/logo-dark.png'
+  } else {
+    html.dataset.theme = 'light'
+    logo.src = 'bsd-branding-repo/logos/logo-light.png'
+  }
+})
+
 // ── Boot ─────────────────────────────────────────────────────────────────────
 
 loadEnv().then(() => {

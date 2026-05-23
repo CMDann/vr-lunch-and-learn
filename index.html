@@ -38,7 +38,7 @@
   <!-- Nav controls -->
   <div id="nav-controls">
     <button id="btn-prev" aria-label="Previous slide">&#8592;</button>
-    <span id="slide-counter">01 / 23</span>
+    <span id="slide-counter">01 / 24</span>
     <button id="btn-next" aria-label="Next slide">&#8594;</button>
   </div>
 
@@ -91,12 +91,11 @@
             </div>
           </div>
         </div>
-        <div class="content-right">
-          <div class="image-grid">
-            <div class="image-slot"><div class="image-placeholder">HEADSHOT</div></div>
-            <div class="image-slot"><div class="image-placeholder">IMAGE 02</div></div>
-            <div class="image-slot"><div class="image-placeholder">IMAGE 03</div></div>
-            <div class="image-slot"><div class="image-placeholder">IMAGE 04</div></div>
+        <div class="content-right about-photo-col">
+          <div class="glitch-wrap">
+            <img src="assets/hs.jpg" alt="Daniel Blair" class="glitch-base">
+            <div class="glitch-layer glitch-r" style="--img:url('../assets/hs.jpg')"></div>
+            <div class="glitch-layer glitch-b" style="--img:url('../assets/hs.jpg')"></div>
           </div>
         </div>
       </div>
@@ -421,8 +420,37 @@ scene.add(light)</pre>
       </div>
     </section>
 
-    <!-- Slide 11: Demo Stage 4 — Interaction -->
+    <!-- Slide 13: Real Assets — Solid vs Wireframe -->
     <section class="slide" data-slide="13" data-section="2">
+      <canvas id="canvas-assets"></canvas>
+      <div class="slide-content assets-overlay">
+        <div class="assets-header">
+          <div class="label">REAL ASSETS — BEHIND THE MESH</div>
+          <h2>SOLID vs WIREFRAME</h2>
+          <div class="asset-legend-row">
+            <span class="leg-solid">&#9632; SOLID</span>
+            <span class="leg-wire">&#9632; WIREFRAME</span>
+          </div>
+        </div>
+        <div class="asset-stats-bar">
+          <div class="asset-stat" id="stat-sword">
+            <div class="as-name">VIKING SWORD</div>
+            <div class="as-loading">LOADING...</div>
+          </div>
+          <div class="asset-stat" id="stat-shield">
+            <div class="as-name">VIKING SHIELD</div>
+            <div class="as-loading">LOADING...</div>
+          </div>
+          <div class="asset-stat" id="stat-feather">
+            <div class="as-name">EAGLE FEATHER</div>
+            <div class="as-loading">LOADING...</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 14: Demo Stage 4 — Interaction -->
+    <section class="slide" data-slide="14" data-section="2">
       <canvas id="canvas-demo4"></canvas>
       <div class="slide-content demo-panel">
         <div class="demo-badge">STAGE 04 / 05</div>
@@ -443,7 +471,7 @@ if (hits.length) {
     </section>
 
     <!-- Slide 12: Demo Stage 5 — Full Experience -->
-    <section class="slide" data-slide="14" data-section="2">
+    <section class="slide" data-slide="15" data-section="2">
       <canvas id="canvas-demo5"></canvas>
       <div class="slide-content demo-panel">
         <div class="demo-badge">STAGE 05 / 05</div>
@@ -462,7 +490,7 @@ if (hits.length) {
     ============================================================ -->
 
     <!-- Slide 13: Opportunity Intro -->
-    <section class="slide" data-slide="15" data-section="3">
+    <section class="slide" data-slide="16" data-section="3">
       <div class="slide-content centered">
         <div class="label">SECTION 03</div>
         <h2>THE OPPORTUNITY</h2>
@@ -476,7 +504,7 @@ if (hits.length) {
     </section>
 
     <!-- Slide 14: Industries -->
-    <section class="slide" data-slide="16" data-section="3">
+    <section class="slide" data-slide="17" data-section="3">
       <div class="slide-content centered">
         <div class="label">WHERE XR DELIVERS</div>
         <h2>INDUSTRY APPLICATIONS</h2>
@@ -510,7 +538,7 @@ if (hits.length) {
     </section>
 
     <!-- Slide 15: Why Now / Timeline -->
-    <section class="slide" data-slide="17" data-section="3">
+    <section class="slide" data-slide="18" data-section="3">
       <div class="slide-content centered">
         <div class="label">WHY NOW</div>
         <h2>THE CONDITIONS ARE RIGHT</h2>
@@ -549,7 +577,7 @@ if (hits.length) {
     ============================================================ -->
 
     <!-- Slide 18: AI in XR Intro -->
-    <section class="slide" data-slide="18" data-section="4">
+    <section class="slide" data-slide="19" data-section="4">
       <canvas id="canvas-ai"></canvas>
       <div class="slide-content centered">
         <div class="label">SECTION 04</div>
@@ -559,7 +587,7 @@ if (hits.length) {
     </section>
 
     <!-- Slide 19: The Convergence -->
-    <section class="slide" data-slide="19" data-section="4">
+    <section class="slide" data-slide="20" data-section="4">
       <div class="slide-content centered">
         <div class="label">WHY NOW</div>
         <h2>TWO TECHNOLOGIES CONVERGING</h2>
@@ -589,7 +617,7 @@ if (hits.length) {
     </section>
 
     <!-- Slide 20: AI Applications — Live Demo -->
-    <section class="slide" data-slide="20" data-section="4">
+    <section class="slide" data-slide="21" data-section="4">
       <div class="slide-content centered">
         <div class="label">LIVE DEMO — AI IN XR</div>
         <h2>GENERATE A TRAINING SCENARIO</h2>
@@ -616,7 +644,7 @@ if (hits.length) {
     </section>
 
     <!-- Slide 21: What Comes Next -->
-    <section class="slide" data-slide="21" data-section="4">
+    <section class="slide" data-slide="22" data-section="4">
       <div class="slide-content centered">
         <div class="label">LOOKING FORWARD</div>
         <h2>WHAT COMES NEXT</h2>
@@ -646,7 +674,7 @@ if (hits.length) {
     </section>
 
     <!-- Slide 19: Close -->
-    <section class="slide" data-slide="22" data-section="4">
+    <section class="slide" data-slide="23" data-section="4">
       <canvas id="canvas-end"></canvas>
       <div class="slide-content centered">
         <div class="label">BSD XR</div>

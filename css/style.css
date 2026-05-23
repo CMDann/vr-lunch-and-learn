@@ -954,6 +954,202 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); }
 }
 
 /* ================================================================
+   GLITCH HEADSHOT
+================================================================ */
+
+.about-photo-col {
+  justify-content: center;
+  align-items: center;
+  max-width: 22rem;
+}
+
+.glitch-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.glitch-base {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  position: relative;
+  z-index: 1;
+}
+
+.glitch-layer {
+  position: absolute;
+  inset: 0;
+  background-image: var(--img);
+  background-size: cover;
+  background-position: center top;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Red channel — shift right, warm hue */
+.glitch-r {
+  filter: hue-rotate(-20deg) saturate(3) contrast(1.1);
+  animation: glitch-r 4s steps(1) infinite;
+}
+
+/* Blue channel — shift left, cool hue */
+.glitch-b {
+  filter: hue-rotate(180deg) saturate(3) contrast(1.1);
+  animation: glitch-b 4s steps(1) infinite;
+}
+
+/* Scan-line overlay */
+.glitch-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(0 0 0 / 0.06) 3px,
+    rgba(0 0 0 / 0.06) 4px
+  );
+  pointer-events: none;
+}
+
+@keyframes glitch-r {
+  0%  { opacity: 0; }
+  6%  { opacity: 0; }
+  7%  { opacity: 0.65; clip-path: inset(18% 0 58% 0); transform: translateX(5px); }
+  8%  { clip-path: inset(44% 0 28% 0); transform: translateX(-4px); }
+  9%  { clip-path: inset(72% 0 8% 0);  transform: translateX(3px); }
+  10% { opacity: 0; }
+  34% { opacity: 0; }
+  35% { opacity: 0.55; clip-path: inset(55% 0 22% 0); transform: translateX(4px); }
+  36% { opacity: 0; }
+  64% { opacity: 0; }
+  65% { opacity: 0.5; clip-path: inset(8% 0 80% 0);  transform: translateX(-5px); }
+  66% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes glitch-b {
+  0%  { opacity: 0; }
+  6%  { opacity: 0; }
+  7%  { opacity: 0.55; clip-path: inset(18% 0 58% 0); transform: translateX(-5px); }
+  8%  { clip-path: inset(60% 0 18% 0); transform: translateX(3px); }
+  9%  { clip-path: inset(30% 0 48% 0); transform: translateX(-3px); }
+  10% { opacity: 0; }
+  34% { opacity: 0; }
+  35% { opacity: 0.5; clip-path: inset(78% 0 4% 0);  transform: translateX(-4px); }
+  36% { opacity: 0; }
+  64% { opacity: 0; }
+  65% { opacity: 0.45; clip-path: inset(15% 0 70% 0); transform: translateX(5px); }
+  66% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* ================================================================
+   ASSETS SLIDE
+================================================================ */
+
+.assets-overlay {
+  justify-content: space-between;
+  align-items: stretch;
+  background:
+    linear-gradient(to bottom, rgba(6 8 16 / 0.75) 0%, rgba(6 8 16 / 0) 22%),
+    linear-gradient(to top,    rgba(6 8 16 / 0.92) 0%, rgba(6 8 16 / 0) 38%);
+}
+
+.assets-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.asset-legend-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.25rem;
+}
+
+.leg-solid {
+  font-size: 0.6rem;
+  letter-spacing: var(--spacing-wide);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.leg-wire {
+  font-size: 0.6rem;
+  letter-spacing: var(--spacing-wide);
+  text-transform: uppercase;
+  color: #00a8e8;
+}
+
+.asset-stats-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--border);
+  background: rgba(6 8 16 / 0.85);
+}
+
+.asset-stat {
+  padding: 1rem 1.25rem;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.asset-stat:last-child {
+  border-right: none;
+}
+
+.as-name {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: var(--spacing);
+  text-transform: uppercase;
+  color: var(--accent);
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0.2rem;
+}
+
+.as-loading {
+  font-size: 0.6rem;
+  letter-spacing: var(--spacing-wide);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.as-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.as-key {
+  font-size: 0.58rem;
+  letter-spacing: var(--spacing-wide);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.as-val {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: var(--spacing);
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+/* ================================================================
    INTERACTION MODALITY GRID
 ================================================================ */
 

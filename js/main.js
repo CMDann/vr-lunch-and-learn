@@ -1,6 +1,7 @@
-import { loadEnv }       from './env.js'
-import { initAIDemo }    from './ai-demo.js'
-import { initHeroScene } from './demos/hero.js'
+import { loadEnv }        from './env.js'
+import { initAIDemo }     from './ai-demo.js'
+import { initHeroScene }  from './demos/hero.js'
+import { initAssetsScene } from './demos/assets.js'
 import { initVRScene }   from './demos/vr.js'
 import { initARScene }   from './demos/ar.js'
 import { initDemo1 }     from './demos/demo1.js'
@@ -11,20 +12,21 @@ import { initDemo5 }     from './demos/demo5.js'
 import { initAIScene }   from './demos/ai-scene.js'
 import { initEndScene }  from './demos/end.js'
 
-const TOTAL = 23
+const TOTAL = 24
 
 /** Map slide index → { canvasId, init function } */
 const DEMOS = {
-  0:  { id: 'canvas-hero',  init: initHeroScene },
-  4:  { id: 'canvas-vr',   init: initVRScene },
-  5:  { id: 'canvas-ar',   init: initARScene },
-  10: { id: 'canvas-demo1', init: initDemo1 },
-  11: { id: 'canvas-demo2', init: initDemo2 },
-  12: { id: 'canvas-demo3', init: initDemo3 },
-  13: { id: 'canvas-demo4', init: initDemo4 },
-  14: { id: 'canvas-demo5', init: initDemo5 },
-  18: { id: 'canvas-ai',   init: initAIScene },
-  22: { id: 'canvas-end',  init: initEndScene },
+  0:  { id: 'canvas-hero',   init: initHeroScene },
+  4:  { id: 'canvas-vr',    init: initVRScene },
+  5:  { id: 'canvas-ar',    init: initARScene },
+  10: { id: 'canvas-demo1',  init: initDemo1 },
+  11: { id: 'canvas-demo2',  init: initDemo2 },
+  12: { id: 'canvas-demo3',  init: initDemo3 },
+  13: { id: 'canvas-assets', init: initAssetsScene },
+  14: { id: 'canvas-demo4',  init: initDemo4 },
+  15: { id: 'canvas-demo5',  init: initDemo5 },
+  19: { id: 'canvas-ai',    init: initAIScene },
+  23: { id: 'canvas-end',   init: initEndScene },
 }
 
 let current = 0
@@ -55,8 +57,12 @@ function maybeInitDemo(index) {
   if (!entry || initialized.has(index)) return
   const canvas = document.getElementById(entry.id)
   if (!canvas) return
-  entry.init(canvas)
-  initialized.add(index)
+  try {
+    entry.init(canvas)
+    initialized.add(index)
+  } catch (err) {
+    console.error(`Demo init failed for slide ${index}:`, err)
+  }
 }
 
 /**

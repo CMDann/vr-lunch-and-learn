@@ -337,7 +337,7 @@ html, body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0.9rem;
 }
 
 /* Canvas overlay — content pinned left */
@@ -461,8 +461,8 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); }
   letter-spacing: var(--spacing-wide);
   text-transform: uppercase;
   color: var(--muted);
-  margin-top: 1.5rem;
-  padding-top: 1rem;
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
   border-top: 1px solid var(--border);
 }
 

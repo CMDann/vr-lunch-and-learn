@@ -2,6 +2,9 @@ import * as THREE          from 'three'
 import { GLTFLoader }       from 'three/addons/loaders/GLTFLoader.js'
 import { OrbitControls }    from 'three/addons/controls/OrbitControls.js'
 
+const BG_DARK  = 0x060810
+const BG_LIGHT = 0xf0ede7
+
 const ASSETS = [
   {
     file:  'assets/G_VikingSword.glb',
@@ -32,11 +35,11 @@ const TARGET_HEIGHT = 4.2
 export function initAssetsScene(canvas) {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true })
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2))
-  renderer.setClearColor(0x060810, 1)
+  renderer.setClearColor(BG_DARK, 1)
   renderer.shadowMap.enabled = true
 
   const scene  = new THREE.Scene()
-  scene.fog    = new THREE.Fog(0x060810, 22, 45)
+  scene.fog    = new THREE.Fog(BG_DARK, 22, 45)
   const camera = new THREE.PerspectiveCamera(65, 1, 0.1, 100)
   camera.position.set(0, 3, 15)
 
@@ -153,6 +156,12 @@ export function initAssetsScene(canvas) {
     for (const mx of mixers) mx.update(dt)
     controls.update()
     renderer.render(scene, camera)
+  })
+
+  document.addEventListener('themechange', ({ detail: { light } }) => {
+    const bg = light ? BG_LIGHT : BG_DARK
+    renderer.setClearColor(bg, 1)
+    scene.fog.color.setHex(bg)
   })
 
   const ro = new ResizeObserver(resize)

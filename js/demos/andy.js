@@ -3,6 +3,8 @@ import { GLTFLoader }   from 'three/addons/loaders/GLTFLoader.js'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 
 const TARGET_HEIGHT = 3.2
+const BG_DARK       = 0x060810
+const BG_LIGHT      = 0xf0ede7
 
 /**
  * Andy viewer — loads an OpenBrush GLB export and displays it
@@ -11,11 +13,11 @@ const TARGET_HEIGHT = 3.2
 export function initAndyScene(canvas) {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true })
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2))
-  renderer.setClearColor(0x060810, 1)
+  renderer.setClearColor(BG_DARK, 1)
   renderer.outputColorSpace = THREE.SRGBColorSpace
 
   const scene  = new THREE.Scene()
-  scene.fog    = new THREE.Fog(0x060810, 18, 40)
+  scene.fog    = new THREE.Fog(BG_DARK, 18, 40)
 
   const camera = new THREE.PerspectiveCamera(55, 1, 0.01, 100)
   camera.position.set(0, 1.6, 5)
@@ -40,10 +42,10 @@ export function initAndyScene(canvas) {
   })
 
   // Floor
-  const floor = new THREE.Mesh(
-    new THREE.PlaneGeometry(40, 40),
-    new THREE.MeshStandardMaterial({ color: 0x060810, roughness: 0.9 })
-  )
+  const floorMat = new THREE.MeshStandardMaterial({
+    color: BG_DARK, roughness: 0.9,
+  })
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), floorMat)
   floor.rotation.x = -Math.PI / 2
   floor.receiveShadow = false
   scene.add(floor)
@@ -93,6 +95,13 @@ export function initAndyScene(canvas) {
     scene.userData.mixer?.update(dt)
     controls.update()
     renderer.render(scene, camera)
+  })
+
+  document.addEventListener('themechange', ({ detail: { light } }) => {
+    const bg = light ? BG_LIGHT : BG_DARK
+    renderer.setClearColor(bg, 1)
+    scene.fog.color.setHex(bg)
+    floorMat.color.setHex(light ? 0xd8d5cf : BG_DARK)
   })
 
   const ro = new ResizeObserver(resize)

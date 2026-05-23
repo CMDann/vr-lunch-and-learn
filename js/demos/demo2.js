@@ -1,5 +1,8 @@
 import * as THREE from 'three'
 
+const BG_DARK  = 0x0a0a0a
+const BG_LIGHT = 0xf0ede7
+
 /**
  * Demo Stage 2 — Add geometry.
  * Wireframe objects in world space. Same camera.
@@ -7,7 +10,7 @@ import * as THREE from 'three'
 export function initDemo2(canvas) {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true })
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2))
-  renderer.setClearColor(0x0a0a0a, 1)
+  renderer.setClearColor(BG_DARK, 1)
 
   const scene  = new THREE.Scene()
   const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 200)
@@ -54,6 +57,13 @@ export function initDemo2(canvas) {
     camera.lookAt(0, 0.5, 0)
 
     renderer.render(scene, camera)
+  })
+
+  document.addEventListener('themechange', ({ detail: { light } }) => {
+    renderer.setClearColor(light ? BG_LIGHT : BG_DARK, 1)
+    objects.forEach(o => {
+      o.material.color.setHex(light ? 0x1b3d9e : 0xffffff)
+    })
   })
 
   const ro = new ResizeObserver(resize)

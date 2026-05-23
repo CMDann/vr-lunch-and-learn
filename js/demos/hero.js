@@ -1,13 +1,17 @@
 import * as THREE from 'three'
 
+const BG_DARK  = 0x0a0a0a
+const BG_LIGHT = 0xf0ede7
+
 /**
  * Hero slide — floating wireframe polyhedra in deep space.
  * BSD XR palette: near-black bg, white + cyan wireframes.
+ * Responds to themechange event for light-mode projector use.
  */
 export function initHeroScene(canvas) {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true })
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2))
-  renderer.setClearColor(0x0a0a0a, 1)
+  renderer.setClearColor(BG_DARK, 1)
 
   const scene  = new THREE.Scene()
   const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 500)
@@ -19,10 +23,13 @@ export function initHeroScene(canvas) {
   for (let i = 0; i < starPos.length; i++) {
     starPos[i] = (Math.random() - 0.5) * 300
   }
-  starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3))
-  scene.add(new THREE.Points(starGeo, new THREE.PointsMaterial({
-    color: 0xffffff, size: 0.25, sizeAttenuation: true
-  })))
+  starGeo.setAttribute(
+    'position', new THREE.BufferAttribute(starPos, 3)
+  )
+  const starMat = new THREE.PointsMaterial({
+    color: 0xffffff, size: 0.25, sizeAttenuation: true,
+  })
+  scene.add(new THREE.Points(starGeo, starMat))
 
   // Floating shapes
   const geoPool = [
@@ -32,16 +39,20 @@ export function initHeroScene(canvas) {
     new THREE.DodecahedronGeometry(1, 0),
   ]
 
-  const shapes = []
+  const shapeMats = []
+  const shapes    = []
   for (let i = 0; i < 28; i++) {
-    const geo = geoPool[i % geoPool.length].clone()
+    const geo    = geoPool[i % geoPool.length].clone()
     const isCyan = Math.random() > 0.65
-    const mat = new THREE.MeshBasicMaterial({
-      color: isCyan ? 0x00a8e8 : 0xffffff,
-      wireframe: true,
+    const mat    = new THREE.MeshBasicMaterial({
+      color:       isCyan ? 0x00a8e8 : 0xffffff,
+      wireframe:   true,
       transparent: true,
-      opacity: 0.15 + Math.random() * 0.35,
+      opacity:     0.15 + Math.random() * 0.35,
     })
+    mat.userData.isCyan = isCyan
+    shapeMats.push(mat)
+
     const mesh = new THREE.Mesh(geo, mat)
 
     const r     = 8 + Math.random() * 22
@@ -58,17 +69,28 @@ export function initHeroScene(canvas) {
     mesh.scale.setScalar(s)
 
     mesh.userData = {
-      rx: (Math.random() - 0.5) * 0.008,
-      ry: (Math.random() - 0.5) * 0.012,
-      rz: (Math.random() - 0.5) * 0.006,
-      ox: mesh.position.x,
-      oy: mesh.position.y,
+      ...mesh.userData,
+      rx:    (Math.random() - 0.5) * 0.008,
+      ry:    (Math.random() - 0.5) * 0.012,
+      rz:    (Math.random() - 0.5) * 0.006,
+      ox:    mesh.position.x,
+      oy:    mesh.position.y,
       phase: Math.random() * Math.PI * 2,
     }
 
     shapes.push(mesh)
     scene.add(mesh)
   }
+
+  document.addEventListener('themechange', ({ detail: { light } }) => {
+    renderer.setClearColor(light ? BG_LIGHT : BG_DARK, 1)
+    starMat.color.setHex(light ? 0x8899cc : 0xffffff)
+    shapeMats.forEach(m => {
+      if (!m.userData.isCyan) {
+        m.color.setHex(light ? 0x1b3d9e : 0xffffff)
+      }
+    })
+  })
 
   resize()
 

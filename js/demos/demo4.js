@@ -1,5 +1,8 @@
 import * as THREE from 'three'
 
+const BG_DARK  = 0x0a0a0a
+const BG_LIGHT = 0xf0ede7
+
 /**
  * Demo Stage 4 — Raycasting / interaction.
  * Hover to highlight, click to launch.
@@ -8,10 +11,10 @@ import * as THREE from 'three'
 export function initDemo4(canvas) {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true })
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2))
-  renderer.setClearColor(0x0a0a0a, 1)
+  renderer.setClearColor(BG_DARK, 1)
 
   const scene  = new THREE.Scene()
-  scene.fog    = new THREE.Fog(0x0a0a0a, 20, 40)
+  scene.fog    = new THREE.Fog(BG_DARK, 20, 40)
   const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 200)
 
   // Floor
@@ -118,6 +121,12 @@ export function initDemo4(canvas) {
     camera.lookAt(0, 0.5, 0)
 
     renderer.render(scene, camera)
+  })
+
+  document.addEventListener('themechange', ({ detail: { light } }) => {
+    const bg = light ? BG_LIGHT : BG_DARK
+    renderer.setClearColor(bg, 1)
+    scene.fog.color.setHex(bg)
   })
 
   const ro = new ResizeObserver(resize)

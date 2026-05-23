@@ -3,6 +3,9 @@ import { EffectComposer }   from 'three/addons/postprocessing/EffectComposer.js'
 import { RenderPass }       from 'three/addons/postprocessing/RenderPass.js'
 import { UnrealBloomPass }  from 'three/addons/postprocessing/UnrealBloomPass.js'
 
+const BG_DARK  = 0x020408
+const BG_LIGHT = 0xf0ede7
+
 /**
  * Demo Stage 5 — A full experience.
  * Fog, particles, bloom post-processing, point lights, interaction.
@@ -11,13 +14,13 @@ import { UnrealBloomPass }  from 'three/addons/postprocessing/UnrealBloomPass.js
 export function initDemo5(canvas) {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true })
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2))
-  renderer.setClearColor(0x020408, 1)
+  renderer.setClearColor(BG_DARK, 1)
   renderer.shadowMap.enabled  = true
   renderer.toneMapping        = THREE.ACESFilmicToneMapping
   renderer.toneMappingExposure = 1.2
 
   const scene  = new THREE.Scene()
-  scene.fog    = new THREE.FogExp2(0x020408, 0.045)
+  scene.fog    = new THREE.FogExp2(BG_DARK, 0.045)
   const camera = new THREE.PerspectiveCamera(65, 1, 0.1, 200)
 
   // Post-processing
@@ -158,6 +161,12 @@ export function initDemo5(canvas) {
     camera.lookAt(0, 0.5, 0)
 
     composer.render()
+  })
+
+  document.addEventListener('themechange', ({ detail: { light } }) => {
+    const bg = light ? BG_LIGHT : BG_DARK
+    renderer.setClearColor(bg, 1)
+    scene.fog.color.setHex(bg)
   })
 
   const ro = new ResizeObserver(resize)

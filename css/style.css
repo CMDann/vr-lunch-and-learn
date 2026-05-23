@@ -37,11 +37,25 @@
   --accent:    #141414;
 }
 
-/* Canvas slides keep light text — 3D scene behind is always dark */
-[data-theme="light"] .slide:has(canvas) {
-  --text:   #f0f0f0;
-  --muted:  #aaaaaa;
-  --accent: #ffffff;
+/* Canvas overlay panels flip to warm white in light mode */
+[data-theme="light"] .slide-content.overlay-left {
+  background: linear-gradient(
+    to right,
+    rgba(240 237 231 / 0.95) 0%,
+    rgba(240 237 231 / 0.75) 70%,
+    rgba(240 237 231 / 0) 100%
+  );
+  text-shadow: none;
+}
+
+[data-theme="light"] .slide-content.demo-panel {
+  background: linear-gradient(
+    to top,
+    rgba(240 237 231 / 0.97) 0%,
+    rgba(240 237 231 / 0.65) 45%,
+    rgba(240 237 231 / 0) 100%
+  );
+  text-shadow: none;
 }
 
 [data-theme="light"] .section-dot.active {
@@ -66,7 +80,7 @@ html, body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font);
-  font-size: 18px;
+  font-size: clamp(20px, 1.6vw, 28px);
 }
 
 /* ================================================================

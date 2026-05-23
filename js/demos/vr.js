@@ -1,5 +1,8 @@
 import * as THREE from 'three'
 
+const BG_DARK  = 0x020408
+const BG_LIGHT = 0xf0ede7
+
 /**
  * VR slide — immersive virtual room interior.
  * Camera orbits slowly inside. A glowing orb pulses at center.
@@ -7,10 +10,10 @@ import * as THREE from 'three'
 export function initVRScene(canvas) {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true })
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2))
-  renderer.setClearColor(0x020408, 1)
+  renderer.setClearColor(BG_DARK, 1)
 
   const scene  = new THREE.Scene()
-  scene.fog    = new THREE.FogExp2(0x020408, 0.04)
+  scene.fog    = new THREE.FogExp2(BG_DARK, 0.04)
 
   const camera = new THREE.PerspectiveCamera(80, 1, 0.1, 200)
   camera.position.set(0, 1.6, 0)
@@ -91,6 +94,12 @@ export function initVRScene(canvas) {
     })
 
     renderer.render(scene, camera)
+  })
+
+  document.addEventListener('themechange', ({ detail: { light } }) => {
+    const bg = light ? BG_LIGHT : BG_DARK
+    renderer.setClearColor(bg, 1)
+    scene.fog.color.setHex(bg)
   })
 
   const ro = new ResizeObserver(resize)

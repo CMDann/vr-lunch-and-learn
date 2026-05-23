@@ -35,7 +35,7 @@ html, body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font);
-  font-size: 14px;
+  font-size: 16px;
 }
 
 /* ================================================================
@@ -2175,6 +2175,129 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); }
   line-height: 2;
   color: var(--muted);
   font-style: italic;
+}
+
+/* ================================================================
+   TEXT-ONLY SLIDE LEGIBILITY
+   Targets slides without a Three.js canvas and bumps up the
+   smallest text elements so content is readable from distance.
+================================================================ */
+
+.slide:not(:has(canvas)) .label {
+  font-size: 0.82rem;
+}
+
+.slide:not(:has(canvas)) .subtitle {
+  font-size: 0.95rem;
+}
+
+.slide:not(:has(canvas)) .f-text {
+  font-size: 0.88rem;
+}
+
+.slide:not(:has(canvas)) .f-marker {
+  font-size: 1.05rem;
+}
+
+/* Session plan table */
+.slide:not(:has(canvas)) .session-row {
+  font-size: 0.75rem;
+}
+
+.slide:not(:has(canvas)) .session-row.s-header {
+  font-size: 0.68rem;
+}
+
+/* Zone cards */
+.slide:not(:has(canvas)) .zc-label {
+  font-size: 0.7rem;
+}
+
+.slide:not(:has(canvas)) .zc-items li {
+  font-size: 0.75rem;
+}
+
+/* Safety rules */
+.slide:not(:has(canvas)) .si-num {
+  font-size: 0.75rem;
+}
+
+.slide:not(:has(canvas)) .si-text {
+  font-size: 0.78rem;
+}
+
+/* Getting started */
+.slide:not(:has(canvas)) .setup-heading {
+  font-size: 0.7rem;
+}
+
+.slide:not(:has(canvas)) .setup-step,
+.slide:not(:has(canvas)) .btn-row {
+  font-size: 0.78rem;
+}
+
+/* OpenBrush */
+.slide:not(:has(canvas)) .ob-desc {
+  font-size: 0.85rem;
+}
+
+.slide:not(:has(canvas)) .ob-sub {
+  font-size: 0.7rem;
+}
+
+.slide:not(:has(canvas)) .brush-item {
+  font-size: 0.72rem;
+}
+
+.slide:not(:has(canvas)) .oc-label {
+  font-size: 0.8rem;
+}
+
+.slide:not(:has(canvas)) .oc-desc {
+  font-size: 0.73rem;
+}
+
+/* Activity slides */
+.slide:not(:has(canvas)) .act-num {
+  font-size: 0.73rem;
+}
+
+.slide:not(:has(canvas)) .act-goal {
+  font-size: 0.82rem;
+}
+
+.slide:not(:has(canvas)) .ami-key {
+  font-size: 0.68rem;
+}
+
+.slide:not(:has(canvas)) .ami-val {
+  font-size: 0.78rem;
+}
+
+.slide:not(:has(canvas)) .act-step {
+  font-size: 0.78rem;
+}
+
+/* Group roles */
+.slide:not(:has(canvas)) .role-name {
+  font-size: 0.9rem;
+}
+
+.slide:not(:has(canvas)) .role-tag {
+  font-size: 0.7rem;
+}
+
+.slide:not(:has(canvas)) .role-desc {
+  font-size: 0.75rem;
+}
+
+/* Reflect + close */
+.slide:not(:has(canvas)) .reflect-q {
+  font-size: 0.78rem;
+}
+
+.slide:not(:has(canvas)) .closing-block {
+  font-size: 0.75rem;
 }
 
 /* OpenBrush image gallery */
